@@ -17,7 +17,6 @@ export class PeopleComponent {
 
   get(){
     this.service.getAll().subscribe((peoples: Person[])=>{
-      // TODO: começar dev
       console.log(peoples);
     });
   }
