@@ -3,7 +3,21 @@
 
     nav {
         border-radius: 10px;
-        border: 1px solid #eee;
-        background: #f4f4f4;
+        border: 1px solid #414b55;
+        background: #394047;
+
+        ul {
+            display: block;
+            padding: 0;
+
+            li {
+                display: block;
+                padding: 5px 0;
+
+                a {
+                    text-align: left;
+                }
+            }
+        }
     }
 }

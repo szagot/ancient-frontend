@@ -2,8 +2,18 @@
     <div class="row">
         <nav class="col-2">
             <ul>
-                <li><a href="#" (click)="go('/admin/people')">Personagens</a></li>
-                <li><a href="#" (click)="go('/admin/questions')">Perguntas</a></li>
+                <li>
+                    <a class="btn btn-dark form-control" href="#" (click)="go('/admin/people')">
+                        <i class="bi bi-people-fill"></i>
+                        Personagens
+                    </a>
+                </li>
+                <li>
+                    <a class="btn btn-dark form-control" href="#" (click)="go('/admin/questions')">
+                        <i class="bi bi-patch-question-fill"></i>
+                        Perguntas
+                    </a>
+                </li>
             </ul>
         </nav>
         <main class="col-10">

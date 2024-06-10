@@ -1,1 +1,25 @@
-<p>people works!</p>
+<h1 class="display-6">Personagens</h1>
+<table *ngIf="people" class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th class="actions"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let person of people">
+            <th>{{person.id}}</th>
+            <td><input class="form-control" [(ngModel)]="person.name" (change)="save(person)"></td>
+            <th>
+                <button type="button" class="btn btn-sm btn-primary" title="Visualizar perguntas deste personagem"><i class="bi bi-eye"></i></button>
+                <button type="button" class="btn btn-sm btn-danger" title="Apagar personagem"><i class="bi bi-trash"></i></button>
+            </th>
+        </tr>
+        <tr>
+            <th>Novo</th>
+            <td><input class="form-control" [(ngModel)]="newName" (change)="saveNew()"></td>
+            <th></th>
+        </tr>
+    </tbody>
+</table>
