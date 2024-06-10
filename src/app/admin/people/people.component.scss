@@ -15,3 +15,15 @@ th:first-child {
 .actions {
     width: 100px;
 }
+
+.find {
+    margin: 20px 0;
+}
+
+.table-limit {
+    overflow: hidden;
+    overflow-y: scroll;
+    max-height: 700px;
+    border: 1px solid #414b55;
+    border-radius: var(--bs-border-radius);
+}

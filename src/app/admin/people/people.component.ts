@@ -17,22 +17,40 @@ import { FormsModule } from '@angular/forms';
 export class PeopleComponent {
   people: Person[] = [];
   newName: string = '';
+  find: string = '';
 
   constructor(private service: PeopleService) {
-    this.get();
+    this.refreshTable();
   }
 
-  get() {
+  refreshTable() {
+    this.newName = '';
+    this.find = '';
+    this.people = [];
     this.service.getAll().subscribe((people: Person[]) => {
+      people.sort((a, b) => (a.name < b.name) ? -1 : 1);
       this.people = people;
     });
   }
 
-  save(person: Person) {
-    console.log(person);
+  filteredPeople() {
+    if (!this.find) {
+      return this.people;
+    }
+
+    const regex = new RegExp(this.find, 'i');
+    return this.people.filter(person => person.name.match(regex));
   }
 
-  saveNew(){
-    console.log(this.newName);
+  save(person: Person) {
+    this.service.update(person).subscribe(() => {
+      this.refreshTable();
+    });
+  }
+
+  saveNew() {
+    this.service.insert(this.newName).subscribe(() => {
+      this.refreshTable();
+    });
   }
 }
