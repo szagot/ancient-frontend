@@ -3,6 +3,7 @@ import { PeopleService } from '../../services/people.service';
 import { Person } from '../../models/person.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Question } from '../../models/question.model';
 
 @Component({
   selector: 'app-people',
@@ -60,5 +61,15 @@ export class PeopleComponent {
         this.refreshTable();
       });
     }
+  }
+
+  getQuestions(id: number){
+    this.service.getQuestions(id).subscribe((questions: Question[])=>{
+      let alertText = '';
+      questions.forEach(question => {
+        alertText += `\n• ${question.question}`;
+      });
+      alert(alertText ? alertText : 'Nenhuma pergunta cadastrada.');
+    });
   }
 }

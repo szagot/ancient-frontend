@@ -15,6 +15,10 @@ export class PeopleService {
     return this.http.get(environment.uri + environment.people);
   }
 
+  getQuestions(id: number): Observable<any>{
+    return this.http.get(environment.uri + environment.people + `/${id}/questions`);
+  }
+
   insert(name: string): Observable<any>{
     return this.http.post(environment.uri + environment.people, {
       name: name

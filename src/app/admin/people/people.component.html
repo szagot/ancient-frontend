@@ -19,7 +19,7 @@
                 <th>{{person.id}}</th>
                 <td><input class="form-control" [(ngModel)]="person.name" (change)="save(person)"></td>
                 <th>
-                    <button type="button" class="btn btn-sm btn-primary" title="Visualizar perguntas deste personagem">
+                    <button type="button" class="btn btn-sm btn-primary" title="Visualizar perguntas deste personagem" (click)="getQuestions(person.id)">
                         <i class="bi bi-eye"></i>
                     </button>
                     <button type="button" class="btn btn-sm btn-danger" title="Apagar personagem" (click)="delete(person.id)">
