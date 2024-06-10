@@ -1,32 +1,57 @@
-<h1 class="display-6">Personagens</h1>
-<input type="text" class="form-control find" [(ngModel)]="find" placeholder="Procure pelo nome...">
-<div class="table-limit">
-    <table *ngIf="people" class="table table-dark table-hover table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nome</th>
-                <th class="actions"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>Novo</th>
-                <td><input class="form-control" [(ngModel)]="newName" (change)="saveNew()"></td>
-                <th></th>
-            </tr>
-            <tr *ngFor="let person of filteredPeople()">
-                <th>{{person.id}}</th>
-                <td><input class="form-control" [(ngModel)]="person.name" (change)="save(person)"></td>
-                <th>
-                    <button type="button" class="btn btn-sm btn-primary" title="Visualizar perguntas deste personagem" (click)="getQuestions(person.id)">
-                        <i class="bi bi-eye"></i>
-                    </button>
-                    <button type="button" class="btn btn-sm btn-danger" title="Apagar personagem" (click)="delete(person.id)">
-                        <i class="bi bi-trash"></i>
-                    </button>
-                </th>
-            </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <h1 class="display-6">Personagens</h1>
+    <input type="text" class="form-control find" [(ngModel)]="find" placeholder="Procure pelo nome...">
+    <div class="row">
+        <div class="col-8">
+            <div class="table-limit">
+                <table *ngIf="people" class="table table-dark table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th class="actions"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Novo</th>
+                            <td><input class="form-control" [(ngModel)]="newName" (change)="saveNew()"></td>
+                            <th></th>
+                        </tr>
+                        <tr *ngFor="let person of filteredPeople()">
+                            <th>{{person.id}}</th>
+                            <td><input class="form-control" [(ngModel)]="person.name" (change)="save(person)"></td>
+                            <th>
+                                <button type="button" class="btn btn-sm btn-primary"
+                                    title="Visualizar perguntas deste personagem" (click)="getQuestions(person)">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-danger" title="Apagar personagem"
+                                    (click)="delete(person.id)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="questions">
+                <div *ngIf="!personQuestions.person">
+                    <small>Clique em visualizar questões de um personagem ao lado...</small>
+                </div>
+                <div *ngIf="personQuestions.person">
+                    <h2 class="display-6">{{personQuestions.person}}</h2>
+                    <div *ngIf="!personQuestions.questions.length"><small>Nenhum pergunta cadastrada</small></div>
+                    <div *ngIf="personQuestions.questions.length">
+                        <ul class="group">
+                            <li class="item" *ngFor="let question of personQuestions.questions">{{question.question}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -19,6 +19,10 @@ export class PeopleComponent {
   people: Person[] = [];
   newName: string = '';
   find: string = '';
+  personQuestions: any = {
+    person: '',
+    question: []
+  };
 
   constructor(private service: PeopleService) {
     this.refreshTable();
@@ -28,6 +32,8 @@ export class PeopleComponent {
     this.newName = '';
     this.find = '';
     this.people = [];
+    this.personQuestions.person = '';
+    this.personQuestions.questions = [];
     this.service.getAll().subscribe((people: Person[]) => {
       people.sort((a, b) => (a.name < b.name) ? -1 : 1);
       this.people = people;
@@ -63,13 +69,11 @@ export class PeopleComponent {
     }
   }
 
-  getQuestions(id: number){
-    this.service.getQuestions(id).subscribe((questions: Question[])=>{
-      let alertText = '';
-      questions.forEach(question => {
-        alertText += `\n• ${question.question}`;
-      });
-      alert(alertText ? alertText : 'Nenhuma pergunta cadastrada.');
+  getQuestions(person: Person){
+    this.personQuestions = [];
+    this.service.getQuestions(person.id).subscribe((questions: Question[])=>{
+      this.personQuestions.person = person.name;
+      this.personQuestions.questions = questions;
     });
   }
 }
