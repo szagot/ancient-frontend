@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PeopleService } from '../../services/people.service';
+import { Person } from '../../models/person.model';
 
 @Component({
   selector: 'app-people',
@@ -9,4 +11,14 @@ import { Component } from '@angular/core';
 })
 export class PeopleComponent {
 
+  constructor(private service: PeopleService){
+    this.get();
+  }
+
+  get(){
+    this.service.getAll().subscribe((peoples: Person[])=>{
+      // TODO: começar dev
+      console.log(peoples);
+    });
+  }
 }
