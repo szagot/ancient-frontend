@@ -53,4 +53,12 @@ export class PeopleComponent {
       this.refreshTable();
     });
   }
+
+  delete(id: number) {
+    if (confirm(`Tem certeza que deseja apagar o personagem de ID ${id}?`)) {
+      this.service.delete(id).subscribe(() => {
+        this.refreshTable();
+      });
+    }
+  }
 }
