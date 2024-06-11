@@ -1,0 +1,74 @@
+.container {
+    height: calc(100vh - 40px);
+
+    .row {
+        height: calc(100vh - 165px);
+    }
+
+    .btn {
+        margin: 0 5px;
+    }
+
+    th,
+    td {
+        vertical-align: middle;
+    }
+
+    th:first-child {
+        width: 1%;
+        text-align: center;
+    }
+
+    .actions {
+        width: 100px;
+    }
+
+    .find {
+        margin: 20px 0;
+    }
+
+    .table-limit {
+        overflow: hidden;
+        overflow-y: scroll;
+        height: calc(100vh - 165px);
+        border: 1px solid #414b55;
+        border-radius: var(--bs-border-radius);
+    }
+
+    .questions {
+        position: relative;
+        padding: 20px;
+        border: 1px solid #414b55;
+        border-radius: var(--bs-border-radius);
+        height: 100%;
+
+        small {
+            color: #666;
+            font-style: italic;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        .group {
+            display: block;
+            margin: 20px 5px;
+            padding: 0;
+
+            .item {
+                display: block;
+                margin: 5px 0;
+                padding: 0;
+            }
+        }
+
+        .save_btn {
+            position: absolute;
+            bottom: 0;
+            left: -5px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+}
