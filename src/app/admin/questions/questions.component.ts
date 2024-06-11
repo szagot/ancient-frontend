@@ -69,12 +69,23 @@ export class QuestionsComponent {
     }
   }
 
-  save(question: Question) { }
+  save(question: Question) {
+    this.service.update(question).subscribe(() => {
+      this.refreshTable();
+    });
+  }
 
-  saveNew() { }
+  saveNew() {
+    this.service.insert(this.newQuestion).subscribe(() => {
+      this.refreshTable();
+    });
+  }
 
-  savePersons(){
+  savePersons() {
     this.block = false;
+    if (this.personQuestions.id) {
+      this.save(this.personQuestions);
+    }
   }
 
   getPersons(question: Question) {
@@ -84,6 +95,11 @@ export class QuestionsComponent {
     }
   }
 
-  delete(id: number) { }
-
+  delete(id: number) {
+    if (confirm(`Tem certeza que deseja apagar a pergunta de ID ${id}?`)) {
+      this.service.delete(id).subscribe(() => {
+        this.refreshTable();
+      });
+    }
+  }
 }
