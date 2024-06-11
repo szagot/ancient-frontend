@@ -20,7 +20,7 @@ export class PeopleComponent {
   newName: string = '';
   find: string = '';
   personQuestions: any = {
-    person: '',
+    person: null,
     question: []
   };
 
@@ -32,7 +32,7 @@ export class PeopleComponent {
     this.newName = '';
     this.find = '';
     this.people = [];
-    this.personQuestions.person = '';
+    this.personQuestions.person = null;
     this.personQuestions.questions = [];
     this.service.getAll().subscribe((people: Person[]) => {
       people.sort((a, b) => (a.name < b.name) ? -1 : 1);
@@ -72,7 +72,7 @@ export class PeopleComponent {
   getQuestions(person: Person){
     this.personQuestions = [];
     this.service.getQuestions(person.id).subscribe((questions: Question[])=>{
-      this.personQuestions.person = person.name;
+      this.personQuestions.person = person;
       this.personQuestions.questions = questions;
     });
   }

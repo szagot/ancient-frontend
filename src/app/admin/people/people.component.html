@@ -22,8 +22,11 @@
                             <th>{{person.id}}</th>
                             <td><input class="form-control" [(ngModel)]="person.name" (change)="save(person)"></td>
                             <th>
-                                <button type="button" class="btn btn-sm btn-primary"
-                                    title="Visualizar perguntas deste personagem" (click)="getQuestions(person)">
+                                <button type="button" class="btn btn-sm"
+                                    title="Visualizar perguntas deste personagem" 
+                                    (click)="getQuestions(person)"
+                                    [ngClass]="(personQuestions.person?.id == person.id) ? 'btn-default' : 'btn-primary'"
+                                    >
                                     <i class="bi bi-eye"></i>
                                 </button>
                                 <button type="button" class="btn btn-sm btn-danger" title="Apagar personagem"
@@ -42,7 +45,7 @@
                     <small>Clique em visualizar questões de um personagem ao lado...</small>
                 </div>
                 <div *ngIf="personQuestions.person">
-                    <h2 class="display-6">{{personQuestions.person}}</h2>
+                    <h2 class="display-6">{{personQuestions.person.name}}</h2>
                     <div *ngIf="!personQuestions.questions.length"><small>Nenhum pergunta cadastrada</small></div>
                     <div *ngIf="personQuestions.questions.length">
                         <ul class="group">
