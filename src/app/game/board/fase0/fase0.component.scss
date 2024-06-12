@@ -1,0 +1,54 @@
+.welcome {
+    position: relative;
+    text-align: center;
+    font: 16px "M PLUS Rounded 1c", sans-serif;
+    height: calc(100vh - 60px);
+
+    h1 {
+        color: white;
+        margin: 30px 20px;
+        font-size: 4em;
+        padding: 30px;
+        background-color: rgba(0,0,0,.4);
+        border-radius: 10px;
+        border: 1px solid rgba(0,0,0,.6);
+
+        small {
+            display: block;
+            font-size: 0.9em;
+            color: aqua;
+            margin-top: 15px;
+
+            span {
+                position: relative;
+                top: -10px;
+
+                &:first-of-type{
+                    top: 5px;
+                }
+                &:last-of-type{
+                    top: 10px;
+                }
+            }
+
+            b{
+                display: inline-block;
+                position: relative;
+                top: -5px;
+                left: 5px;
+                transform: rotate(20deg);
+            }
+        }
+    }
+
+    .btn {
+        position: absolute;
+        bottom: 60px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        font-size: 1.5em;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-shadow: 0 0 2px rgb(0, 0, 0);
+    }
+}
