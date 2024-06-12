@@ -24,7 +24,9 @@ export class PeopleComponent {
     question: []
   };
 
-  constructor(private service: PeopleService) {
+  constructor(private service: PeopleService) { }
+
+  ngOnInit() {
     this.refreshTable();
   }
 
@@ -69,9 +71,9 @@ export class PeopleComponent {
     }
   }
 
-  getQuestions(person: Person){
+  getQuestions(person: Person) {
     this.personQuestions = [];
-    this.service.getQuestions(person.id).subscribe((questions: Question[])=>{
+    this.service.getQuestions(person.id).subscribe((questions: Question[]) => {
       this.personQuestions.person = person;
       this.personQuestions.questions = questions;
     });

@@ -5,7 +5,7 @@
     </h1>
     <input type="text" class="form-control find" [(ngModel)]="find" placeholder="Procure pelo nome...">
     <div class="row">
-        <div class="col-8">
+        <div class="col-12 col-md-8">
             <div class="table-limit">
                 <table *ngIf="people" class="table table-dark table-hover table-striped">
                     <thead>
@@ -42,7 +42,7 @@
                 </table>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-4">
             <div class="questions">
                 <div *ngIf="!personQuestions.person">
                     <small>Clique em visualizar questões de um personagem ao lado...</small>

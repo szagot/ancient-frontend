@@ -28,6 +28,10 @@ export class QuestionsComponent {
     private service: QuestionsService,
     private peopleService: PeopleService
   ) {
+
+  }
+
+  ngOnInit() {
     this.refreshTable();
     this.peopleService.getAll().subscribe((people: Person[]) => {
       people.sort((a, b) => (a.name < b.name) ? -1 : 1);

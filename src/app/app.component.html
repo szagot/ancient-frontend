@@ -1,23 +1,45 @@
 <div class="container">
     <div class="row">
-        <nav class="col-2">
+        <!-- Nav: visible on larger screens, hidden on smaller screens -->
+        <nav class="col-2 d-none d-md-block">
             <ul>
+                <!-- This button is hidden on larger screens, visible on smaller screens -->
                 <li>
-                    <a class="btn btn-dark form-control" href="#" (click)="go('/admin/people')">
-                        <i class="bi bi-people-fill"></i>
-                        Personagens
+                    <a class="btn btn-dark form-control d-none d-lg-block" href="#" (click)="go('/')">
+                        <i class="bi bi-joystick"></i>
+                        Jogo
+                    </a>
+                    <a class="btn btn-dark form-control d-block d-lg-none text-center" href="#" (click)="go('/')">
+                        <i class="bi bi-joystick"></i>
                     </a>
                 </li>
                 <li>
-                    <a class="btn btn-dark form-control" href="#" (click)="go('/admin/questions')">
+                    <!-- Full item with text, visible on lg and up -->
+                    <a class="btn btn-dark form-control d-none d-lg-block" href="#" (click)="go('/admin/people')">
+                        <i class="bi bi-people-fill"></i>
+                        Pessoas
+                    </a>
+                    <!-- Icon only, visible on md -->
+                    <a class="btn btn-dark form-control d-block d-lg-none text-center" href="#" (click)="go('/admin/people')">
+                        <i class="bi bi-people-fill"></i>
+                    </a>
+                </li>
+                <li>
+                    <!-- Full item with text, visible on lg and up -->
+                    <a class="btn btn-dark form-control d-none d-lg-block" href="#" (click)="go('/admin/questions')">
                         <i class="bi bi-patch-question-fill"></i>
                         Perguntas
+                    </a>
+                    <!-- Icon only, visible on md -->
+                    <a class="btn btn-dark form-control d-block d-lg-none text-center" href="#" (click)="go('/admin/questions')">
+                        <i class="bi bi-patch-question-fill"></i>
                     </a>
                 </li>
             </ul>
         </nav>
-        <main class="col-10">
-            <router-outlet />
+        <!-- Main: adjusts based on the presence of the nav -->
+        <main class="col-12 col-md-10">
+            <router-outlet></router-outlet>
         </main>
     </div>
 </div>
