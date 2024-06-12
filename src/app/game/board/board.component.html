@@ -1,1 +1,22 @@
-<p>Em breve...</p>
+<div class="container">
+
+    <!-- Fase 0: Inicio -->
+    <div *ngIf="service.getFase()==0">
+        <app-fase0 />
+    </div>
+    
+    <!-- Fase 1: Seleção de personagens -->
+    <div *ngIf="service.getFase()==1">
+        <app-fase1 />
+    </div>
+    
+    <!-- Fase 2: Perguntas -->
+    <div *ngIf="service.getFase()==2">
+        <app-fase2 />
+    </div>
+    
+    <!-- Fase 3: Final - quem ganhou -->
+    <div *ngIf="service.getFase()==3">
+        <app-fase3 />
+    </div>
+</div>

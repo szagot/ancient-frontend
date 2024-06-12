@@ -6,7 +6,17 @@ import { Gamer } from '../models/gamer.model';
 })
 export class GameService {
 
-  // TODO: Iniciado controle de gamers
+  fase: number = 0;
+  setFase(fase: number){
+    this.fase = fase;
+  }
+  nextFase(){
+    this.fase = (this.fase < 3) ?( this.fase + 1) : 0
+  }
+  getFase(){
+    return this.fase;
+  }
+
   gamers: Gamer[] = [];
   addGamer(gamer: Gamer) {
     if (!this.getGamer(gamer.id)) {
