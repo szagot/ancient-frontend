@@ -35,6 +35,12 @@ export class Fase1Component {
     return this.service.getGamers();
   }
 
+  removeGamer(index: number) {
+    if (this.getGamers()[index]) {
+      this.service.removeGamer(index);
+    }
+  }
+
   numberOfGamersIsValid() {
     return this.service.numberOfGamersIsValid();
   }
@@ -46,5 +52,10 @@ export class Fase1Component {
 
     this.service.updateGamer(index, newValue);
     this.service.addGamer('');
+
+    let lastInput = document.getElementById(`gamer-${index}`);
+    if (lastInput) {
+      lastInput.focus();
+    }
   }
 }

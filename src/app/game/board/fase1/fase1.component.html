@@ -2,8 +2,16 @@
     <h1 class="blueShadow">Jogadores</h1>
     <div class="border shadow">
         <div *ngFor="let gamer of getGamers(); let i = index" class="gamer input-group mb-3">
-            <label class="input-group-text" for="gamer-{{i}}">Jogador {{i + 1}}</label>
-            <input type="text" class="form-control" id="gamer-{{i}}" [value]="gamer" (change)="onGamerChange(i, $event)">
+            <label class="input-group-text" for="gamer-{{i}}">{{ (i + 1).toString().padStart(2, '0') }}</label>
+            <input type="text" class="form-control gamerName" id="gamer-{{i}}" [value]="gamer"
+                (change)="onGamerChange(i, $event)">
+            <button *ngIf="!gamer" class="btn btn-default input-group-text">
+                <i class="bi bi-plus-circle-fill"></i>
+            </button>
+            <button *ngIf="gamer" class="btn btn-default input-group-text" (click)="removeGamer(i)">
+                <i class="bi bi-dash-circle-fill"></i>
+            </button>
+
         </div>
     </div>
 </div>
