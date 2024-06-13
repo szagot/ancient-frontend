@@ -1,70 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css?family=Pacifico&text=Pure");
-@import url("https://fonts.googleapis.com/css?family=Roboto:700&text=css");
 @import url("https://fonts.googleapis.com/css?family=Kaushan+Script&text=!");
+@import url("https://fonts.googleapis.com/css?family=Roboto:700&text=css");
 
 .outofloop {
     font: 16px "Pacifico", "Kaushan Script", Futura, "Roboto", "Trebuchet MS", Helvetica, sans-serif;
-}
 
-.board {
-    opacity: 1;
-    transition: opacity 0.8s ease-out;
+    .board {
+        opacity: 1;
+        transition: opacity 0.8s ease-out;
+        height: calc(100vh - 40px);
+        padding-top: 40px;
 
-    &.by {
-        opacity: 0;
-    }
-}
-
-.blueShadow {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: whitesmoke;
-    text-shadow:
-        -1px 0 1px #0058aa,
-        0 1px 1px #0058aa,
-        1px 0 1px #0058aa,
-        0 -1px 1px #0058aa,
-
-        -2px 0 5px #0077ea,
-        0 2px 5px #0077ea,
-        2px 0 5px #0077ea,
-        0 -2px 5px #0077ea,
-
-        -4px 0 10px #0068c9,
-        0 4px 10px #0068c9,
-        4px 0 10px #0068c9,
-        0 -4px 10px #0068c9;
-
-    &.btn {
-        border: 0 none !important;
-        text-transform: uppercase;
-        font-size: 2rem;
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%, 0);
-
-        &.start {
-            font-size: 2.5rem;
+        &.by {
+            opacity: 0;
         }
 
-        &.active {
-            color: white;
-            text-shadow:
-                -1px 0 1px #0058aa,
-                0 1px 1px #0058aa,
-                1px 0 1px #0058aa,
-                0 -1px 1px #0058aa,
+        .border {
+            border: 1px solid rgba(0, 36, 70, 0.4);
+            border-radius: 10px;
+            background: rgba(0, 36, 70, 0.3);
+            padding: 20px;
+            margin: 20px 0;
 
-                -2px 0 5px #4faaff,
-                0 2px 5px #4faaff,
-                2px 0 5px #4faaff,
-                0 -2px 5px #4faaff,
+            .input-group-text {
+                background-color: #0058aa;
+                color: whitesmoke;
+                border-color: rgba(0, 36, 70, 0.4);
+            }
 
-                -4px 0 10px #399fff,
-                0 4px 10px #399fff,
-                4px 0 10px #399fff,
-                0 -4px 10px #399fff;
+            .form-control {
+                background-color: whitesmoke;
+                border-color: rgba(0, 36, 70, 0.4);
+                color: #0058aa;
+            }
+        }
+    }
+
+    .blueShadow {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: whitesmoke;
+        text-shadow:
+            -1px 0 1px #0058aa,
+            0 1px 1px #0058aa,
+            1px 0 1px #0058aa,
+            0 -1px 1px #0058aa,
+
+            -2px 0 5px #0077ea,
+            0 2px 5px #0077ea,
+            2px 0 5px #0077ea,
+            0 -2px 5px #0077ea,
+
+            -4px 0 10px #0068c9,
+            0 4px 10px #0068c9,
+            4px 0 10px #0068c9,
+            0 -4px 10px #0068c9;
+
+        &.btn {
+            border: 0 none !important;
+            text-transform: uppercase;
+            font-size: 2rem;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+            animation: pulsar 2s infinite;
+
+            &.start {
+                font-size: 2.5rem;
+            }
         }
     }
 }
@@ -88,3 +92,40 @@
         left: 250%;
     }
 }
+
+@keyframes pulsar {
+    0%, 100% {
+      text-shadow:
+        -1px 0 1px #0058aa,
+        0 1px 1px #0058aa,
+        1px 0 1px #0058aa,
+        0 -1px 1px #0058aa,
+  
+        -2px 0 5px #0077ea,
+        0 2px 5px #0077ea,
+        2px 0 5px #0077ea,
+        0 -2px 5px #0077ea,
+  
+        -4px 0 10px #0068c9,
+        0 4px 10px #0068c9,
+        4px 0 10px #0068c9,
+        0 -4px 10px #0068c9;
+    }
+    50% {
+      text-shadow:
+        -1px 0 1px #004080,
+        0 1px 1px #004080,
+        1px 0 1px #004080,
+        0 -1px 1px #004080,
+  
+        -2px 0 5px #0050b0,
+        0 2px 5px #0050b0,
+        2px 0 5px #0050b0,
+        0 -2px 5px #0050b0,
+  
+        -4px 0 10px #0045a0,
+        0 4px 10px #0045a0,
+        4px 0 10px #0045a0,
+        0 -4px 10px #0045a0;
+    }
+  }

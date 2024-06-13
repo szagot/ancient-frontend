@@ -1,4 +1,10 @@
+h1.blueShadow{
+    font-size: 3em;
+    text-align: center;
+}
+
 .btn {
+    bottom: 50px;
 
     &.active {
         animation: btnOutRight 0.8s ease-out forwards;

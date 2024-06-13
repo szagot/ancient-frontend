@@ -6,7 +6,8 @@ import { Gamer } from '../models/gamer.model';
 })
 export class GameService {
 
-  fase: number = 0;
+  // TODO: voltar pra 0
+  fase: number = 1;
   setFase(fase: number) {
     this.fase = fase;
   }
