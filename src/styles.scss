@@ -22,6 +22,9 @@
             background: rgba(0, 36, 70, 0.3);
             padding: 20px;
             margin: 20px 0;
+            height: calc(100vh - 300px);
+            overflow: hidden;
+            overflow-y: auto;
 
             .input-group-text {
                 background-color: #0058aa;
