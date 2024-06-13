@@ -14,12 +14,12 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './fase1.component.scss'
 })
 export class Fase1Component {
-  constructor(private service: GameService){  }
+  constructor(private service: GameService) { }
 
   nextFase() {
     const btn = document.querySelector('.next');
     const board = document.querySelector('.board');
-    
+
     // Efeitos
     btn?.classList.add('active');
     board?.classList.add('by');
@@ -29,5 +29,22 @@ export class Fase1Component {
       btn?.classList.remove('active');
       board?.classList.remove('by');
     }, 1000);
+  }
+
+  getGamers() {
+    return this.service.getGamers();
+  }
+
+  numberOfGamersIsValid() {
+    return this.service.numberOfGamersIsValid();
+  }
+
+  onGamerChange(index: number, event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    const newValue = inputElement.value;
+    inputElement.value = '';
+
+    this.service.updateGamer(index, newValue);
+    this.service.addGamer('');
   }
 }

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Gamer } from '../models/gamer.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +17,42 @@ export class GameService {
     return this.fase;
   }
 
-  gamers: Gamer[] = [];
-  addGamer(gamer: Gamer) {
-    if (!this.getGamer(gamer.id)) {
+  gamers: string[] = [''];
+
+  addGamer(gamer: string) {
+    gamer = gamer.trim();
+    if (!this.getGamerByName(gamer)) {
       this.gamers.push(gamer);
     }
   }
-  getGamer(id: number) {
-    return this.gamers.filter((gamer: Gamer) => { gamer.id == id });
+
+  removeGamer(index: number) {
+    if (index > -1 && this.gamers.length > 1) {
+      this.gamers.splice(index, 1);
+    }
   }
+
+  updateGamer(index: number, newName: string) {
+    if (index > -1) {
+      newName = newName.trim();
+      if (!this.getGamerByName(newName)) {
+        this.gamers[index] = newName;
+      } else {
+        this.removeGamer(index);
+      }
+    }
+  }
+
+  getGamerByName(search: string) {
+    return this.gamers.some(gamer => gamer.toLowerCase() === search.toLowerCase());
+  }
+
   getGamers() {
     return this.gamers;
+  }
+
+  numberOfGamersIsValid() {
+    return this.gamers.filter((gamer) => gamer.trim() !== '').length > 3;
   }
 
   constructor() { }
