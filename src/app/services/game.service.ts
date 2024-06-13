@@ -7,13 +7,13 @@ import { Gamer } from '../models/gamer.model';
 export class GameService {
 
   fase: number = 0;
-  setFase(fase: number){
+  setFase(fase: number) {
     this.fase = fase;
   }
-  nextFase(){
-    this.fase = (this.fase < 3) ?( this.fase + 1) : 0
+  nextFase() {
+    this.fase = (this.fase < 3) ? (this.fase + 1) : 0
   }
-  getFase(){
+  getFase() {
     return this.fase;
   }
 
@@ -29,6 +29,6 @@ export class GameService {
   getGamers() {
     return this.gamers;
   }
-  
+
   constructor() { }
 }

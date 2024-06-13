@@ -10,8 +10,23 @@ import { GameService } from '../../../services/game.service';
 })
 export class Fase0Component {
 
-  constructor(public service: GameService){
+  constructor(private service: GameService) {
 
+  }
+
+  nextFase() {
+    const btn = document.querySelector('.next');
+    const stage = document.querySelector('.stage');
+    
+    // Efeitos
+    btn?.classList.add('active');
+    stage?.classList.add('by');
+    setTimeout(() => {
+      this.service.nextFase();
+      // Remoção de efeitos
+      btn?.classList.remove('active');
+      stage?.classList.remove('by');
+    }, 1000);
   }
 
 }
