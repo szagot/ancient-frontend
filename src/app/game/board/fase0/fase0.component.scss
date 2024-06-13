@@ -13,11 +13,6 @@
         left: 0;
         perspective: 9999px;
         transform-style: preserve-3d;
-        transition: opacity 0.8s ease-out;
-
-        &.by {
-            opacity: 0;
-        }
 
         .layer {
             width: 100%;
@@ -38,7 +33,7 @@
             height: 100%;
             width: 100%;
             position: absolute;
-            top: 180px;
+            top: 150px;
             left: 0px;
             color: whitesmoke;
             letter-spacing: -5px;
@@ -150,29 +145,10 @@
     }
     
     .btn {
-        position: absolute;
         bottom: 100px;
-        left: 50%;
-        transform: translate(-50%, 0);
-        font-size: 2.5em;
-        font-weight: 700;
-        color: whitesmoke;
-        text-transform: uppercase;
-        text-shadow: 
-            -1px 0 5px #0077ea,
-            0 1px 5px #0077ea,
-            1px 0 5px #0077ea,
-            0 -1px 5px #0077ea;
-        -webkit-text-stroke: 0.1px #0077ea;
-        border: 0 none !important;
 
         &.active {
-            text-shadow: 
-            -1px 0 6px #3aadfa,
-            0 1px 6px #3aadfa,
-            1px 0 6px #3aadfa,
-            0 -1px 6px #3aadfa;    
-            animation: btnOut 0.8s ease-out forwards;
+            animation: btnOutDown 0.8s ease-out forwards;
         }
     }
 }
@@ -183,11 +159,3 @@
     }
 }
 
-@keyframes btnOut {
-    20% {
-        bottom: 130px;
-    }
-    100% {
-        bottom: -250px;
-    }
-}

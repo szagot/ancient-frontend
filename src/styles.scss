@@ -1,5 +1,92 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Pacifico&text=Pure");
 @import url("https://fonts.googleapis.com/css?family=Roboto:700&text=css");
 @import url("https://fonts.googleapis.com/css?family=Kaushan+Script&text=!");
+
+html,
+body,
+.container {
+    font: 16px "Pacifico", "Kaushan Script", Futura, "Roboto", "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.board {
+    opacity: 1;
+    transition: opacity 0.8s ease-out;
+
+    &.by {
+        opacity: 0;
+    }
+}
+
+.blueShadow {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: whitesmoke;
+    text-shadow:
+        -1px 0 1px #0058aa,
+        0 1px 1px #0058aa,
+        1px 0 1px #0058aa,
+        0 -1px 1px #0058aa,
+
+        -2px 0 5px #0077ea,
+        0 2px 5px #0077ea,
+        2px 0 5px #0077ea,
+        0 -2px 5px #0077ea,
+
+        -4px 0 10px #0068c9,
+        0 4px 10px #0068c9,
+        4px 0 10px #0068c9,
+        0 -4px 10px #0068c9;
+
+    &.btn {
+        border: 0 none !important;
+        text-transform: uppercase;
+        font-size: 2rem;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+
+        &.start {
+            font-size: 2.5rem;
+        }
+
+        &.active {
+            color: white;
+            text-shadow:
+                -1px 0 1px #0058aa,
+                0 1px 1px #0058aa,
+                1px 0 1px #0058aa,
+                0 -1px 1px #0058aa,
+
+                -2px 0 5px #4faaff,
+                0 2px 5px #4faaff,
+                2px 0 5px #4faaff,
+                0 -2px 5px #4faaff,
+
+                -4px 0 10px #399fff,
+                0 4px 10px #399fff,
+                4px 0 10px #399fff,
+                0 -4px 10px #399fff;
+        }
+    }
+}
+
+@keyframes btnOutDown {
+    20% {
+        bottom: 130px;
+    }
+
+    100% {
+        bottom: -250px;
+    }
+}
+
+@keyframes btnOutRight {
+    20% {
+        left: 40%;
+    }
+
+    100% {
+        left: 250%;
+    }
+}
