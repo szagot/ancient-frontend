@@ -62,8 +62,6 @@ export class GameService {
   }
 
   clearGamers() {
-    // TODO: Voltar para ['']
-    this.gamers = ['Daniel', 'Alini', 'Filipe', 'Alejandro', ''];
     this.fase = 0;
     this.actualGamerIndex = 0;
     this.allGamersChoosen = false;
