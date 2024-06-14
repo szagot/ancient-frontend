@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 export class Fase2Component {
   actualGamer: string = '';
   chooseOutOfLoop: string = '';
+  show: boolean = false;
 
   constructor(private service: GameService) {
     this.setActualGamer();
@@ -31,6 +32,11 @@ export class Fase2Component {
   nextGamer() {
     this.service.nextGamer();
     this.setActualGamer();
+    this.show = false;
+  }
+
+  showPerson() {
+    this.show = true;
   }
 
   isAllGamersChoosen() {

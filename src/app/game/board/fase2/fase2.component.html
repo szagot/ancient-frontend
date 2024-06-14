@@ -2,8 +2,14 @@
     <h1 class="blueShadow">Personagem para...</h1>
     <h2 class="blueShadow">{{actualGamer}}</h2>
 
-    <p *ngIf="actualGamer != chooseOutOfLoop">{{getPersonChoosen().name}}</p>
-    <p *ngIf="actualGamer == chooseOutOfLoop">Você está fora do Loop</p>
+    <div *ngIf="show" class="show border">
+        <p *ngIf="actualGamer != chooseOutOfLoop">{{getPersonChoosen().name}}</p>
+        <p *ngIf="actualGamer == chooseOutOfLoop">
+            <i class="bi bi-emoji-sunglasses-fill"></i>
+            Você está fora da Rodada!
+        </p>
+    </div>
+    <button *ngIf="!show" class="btn btn-primary form-control btn-show" (click)="showPerson()">Ver Personagem</button>
 </div>
 
 <button class="btn next blueShadow" (click)="nextGamer()" *ngIf="!isAllGamersChoosen()">Próximo</button>
