@@ -2,7 +2,8 @@
     <h1 class="blueShadow">Personagem para...</h1>
     <h2 class="blueShadow">{{actualGamer}}</h2>
 
-    <p>O escolhido é {{chooseOutOfLoop}}</p>
+    <p *ngIf="actualGamer != chooseOutOfLoop">{{getPersonChoosen().name}}</p>
+    <p *ngIf="actualGamer == chooseOutOfLoop">Você está fora do Loop</p>
 </div>
 
 <button class="btn next blueShadow" (click)="nextGamer()" *ngIf="!isAllGamersChoosen()">Próximo</button>

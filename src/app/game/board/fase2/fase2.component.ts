@@ -51,4 +51,9 @@ export class Fase2Component {
       board?.classList.remove('by');
     }, 1000);
   }
+
+  getPersonChoosen() {
+    console.log(this.service.getLoopQuestions());
+    return this.service.getLoopPerson();
+  }
 }
