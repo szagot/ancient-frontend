@@ -13,11 +13,10 @@
         animation-fill-mode: forwards;
         transform: rotateY(20deg) rotateX(23deg) translateZ(0);
 
-
         &:after {
-            font: 80px/0.65 "Pacifico", "Kaushan Script", Futura, "Roboto", "Trebuchet MS", Helvetica, sans-serif;
+            font: 80px/0.65 'Pacifico', 'Kaushan Script', Futura, 'Roboto', 'Trebuchet MS', Helvetica, sans-serif;
             line-height: 70px;
-            content: "Fora Da\a Rodada!";
+            content: 'Fora Da\a Rodada!';
             white-space: pre;
             text-align: center;
             height: 100%;
@@ -110,16 +109,16 @@
             transform: translateZ(-28.5px);
         }
 
-        &:nth-child(n+10):after {
+        &:nth-child(n + 10):after {
             -webkit-text-stroke: 3px rgba(0, 0, 0, 0.25);
         }
 
-        &:nth-child(n+11):after {
+        &:nth-child(n + 11):after {
             -webkit-text-stroke: 15px dodgerblue;
             text-shadow: 6px 0 6px #00366b, 5px 5px 5px #002951, 0 6px 6px #00366b;
         }
 
-        &:nth-child(n+12):after {
+        &:nth-child(n + 12):after {
             -webkit-text-stroke: 15px #0077ea;
         }
 
@@ -134,11 +133,13 @@
     }
 }
 
-.btn {
-    bottom: 100px;
+.blueShadow {
+    &.btn {
+        bottom: 100px;
 
-    &.active {
-        animation: btnOutDown 0.8s ease-out forwards;
+        &.active {
+            animation: btnOutDown 0.8s ease-out forwards;
+        }
     }
 }
 

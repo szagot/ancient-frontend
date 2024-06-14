@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/css?family=Pacifico&text=Pure");
-@import url("https://fonts.googleapis.com/css?family=Kaushan+Script&text=!");
-@import url("https://fonts.googleapis.com/css?family=Roboto:700&text=css");
+@import url('https://fonts.googleapis.com/css?family=Pacifico&text=Pure');
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script&text=!');
+@import url('https://fonts.googleapis.com/css?family=Roboto:700&text=css');
 
 .outofloop {
-    font: 16px "Pacifico", "Kaushan Script", Futura, "Roboto", "Trebuchet MS", Helvetica, sans-serif;
+    font: 16px 'Pacifico', 'Kaushan Script', Futura, 'Roboto', 'Trebuchet MS', Helvetica, sans-serif;
 
     .board {
         opacity: 1;
@@ -44,21 +44,9 @@
         font-size: 2.5rem;
         font-weight: 700;
         color: whitesmoke;
-        text-shadow:
-            -1px 0 1px #0058aa,
-            0 1px 1px #0058aa,
-            1px 0 1px #0058aa,
-            0 -1px 1px #0058aa,
-
-            -2px 0 5px #0077ea,
-            0 2px 5px #0077ea,
-            2px 0 5px #0077ea,
-            0 -2px 5px #0077ea,
-
-            -4px 0 10px #0068c9,
-            0 4px 10px #0068c9,
-            4px 0 10px #0068c9,
-            0 -4px 10px #0068c9;
+        text-shadow: -1px 0 1px #0058aa, 0 1px 1px #0058aa, 1px 0 1px #0058aa, 0 -1px 1px #0058aa, -2px 0 5px #0077ea,
+            0 2px 5px #0077ea, 2px 0 5px #0077ea, 0 -2px 5px #0077ea, -4px 0 10px #0068c9, 0 4px 10px #0068c9,
+            4px 0 10px #0068c9, 0 -4px 10px #0068c9;
 
         &.btn {
             border: 0 none !important;
@@ -66,6 +54,7 @@
             font-size: 2rem;
             position: absolute;
             left: 50%;
+            bottom: 50px;
             transform: translate(-50%, 0);
             animation: pulsar 2s infinite;
 
@@ -73,6 +62,16 @@
                 font-size: 2.5rem;
             }
         }
+    }
+
+    h1.blueShadow {
+        font-size: 3em;
+        text-align: center;
+    }
+
+    h2.blueShadow {
+        font-size: 3.5em;
+        text-align: center;
     }
 }
 
@@ -97,38 +96,15 @@
 }
 
 @keyframes pulsar {
-    0%, 100% {
-      text-shadow:
-        -1px 0 1px #0058aa,
-        0 1px 1px #0058aa,
-        1px 0 1px #0058aa,
-        0 -1px 1px #0058aa,
-  
-        -2px 0 5px #0077ea,
-        0 2px 5px #0077ea,
-        2px 0 5px #0077ea,
-        0 -2px 5px #0077ea,
-  
-        -4px 0 10px #0068c9,
-        0 4px 10px #0068c9,
-        4px 0 10px #0068c9,
-        0 -4px 10px #0068c9;
+    0%,
+    100% {
+        text-shadow: -1px 0 1px #0058aa, 0 1px 1px #0058aa, 1px 0 1px #0058aa, 0 -1px 1px #0058aa, -2px 0 5px #0077ea,
+            0 2px 5px #0077ea, 2px 0 5px #0077ea, 0 -2px 5px #0077ea, -4px 0 10px #0068c9, 0 4px 10px #0068c9,
+            4px 0 10px #0068c9, 0 -4px 10px #0068c9;
     }
     50% {
-      text-shadow:
-        -1px 0 1px #004080,
-        0 1px 1px #004080,
-        1px 0 1px #004080,
-        0 -1px 1px #004080,
-  
-        -2px 0 5px #0050b0,
-        0 2px 5px #0050b0,
-        2px 0 5px #0050b0,
-        0 -2px 5px #0050b0,
-  
-        -4px 0 10px #0045a0,
-        0 4px 10px #0045a0,
-        4px 0 10px #0045a0,
-        0 -4px 10px #0045a0;
+        text-shadow: -1px 0 1px #004080, 0 1px 1px #004080, 1px 0 1px #004080, 0 -1px 1px #004080, -2px 0 5px #0050b0,
+            0 2px 5px #0050b0, 2px 0 5px #0050b0, 0 -2px 5px #0050b0, -4px 0 10px #0045a0, 0 4px 10px #0045a0,
+            4px 0 10px #0045a0, 0 -4px 10px #0045a0;
     }
-  }
+}

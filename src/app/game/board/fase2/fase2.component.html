@@ -1,5 +1,11 @@
 <div class="board">
-    <p>fase2 works!</p>
+    <h1 class="blueShadow">Personagem para...</h1>
+    <h2 class="blueShadow">{{getNextGamer()}}</h2>
+    <p>{{getNextGamer()}}</p>
+    <p>{{getNextGamer()}}</p>
+    <p>{{getNextGamer()}}</p>
+
+    <p>O escolhido é {{chooseOutOfLoop()}}</p>
 </div>
 
-<button class="btn next blueShadow" (click)="nextFase()">Próximo</button>
+<button class="btn next blueShadow" (click)="nextFase()" *ngIf="isAllGamersChoosen()">Próximo</button>

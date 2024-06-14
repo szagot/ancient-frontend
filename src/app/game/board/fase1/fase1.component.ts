@@ -32,7 +32,7 @@ export class Fase1Component {
   }
 
   getGamers() {
-    return this.service.getGamers();
+    return this.service.getGamers(false);
   }
 
   removeGamer(index: number) {

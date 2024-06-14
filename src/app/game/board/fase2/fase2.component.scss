@@ -1,5 +1,8 @@
+h2 {
+    margin-top: 20px;
+}
+
 .btn {
-    bottom: 100px;
 
     &.active {
         animation: btnOutRight 0.8s ease-out forwards;
