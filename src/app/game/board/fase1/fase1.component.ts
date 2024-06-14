@@ -53,9 +53,16 @@ export class Fase1Component {
     this.service.updateGamer(index, newValue);
     this.service.addGamer('');
 
-    let lastInput = document.getElementById(`gamer-${index}`);
+    const lastInput = document.getElementById(`gamer-${index}`);
     if (lastInput) {
       lastInput.focus();
+
+      const border = document.querySelector('.border');
+      if (border) {
+        setTimeout(() => {
+          border.scrollTo(0, border.scrollHeight + 100);
+        }, 100);
+      }
     }
   }
 }
