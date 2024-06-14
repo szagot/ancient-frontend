@@ -5,13 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class GameService {
 
-  // TODO: voltar pra 0
-  fase: number = 1;
+  fase: number = 0;
   gamers: string[] = [''];
   actualGamer: number = 0;
   allGamersChoosen: boolean = false;
 
-  constructor() { }
+  constructor() {
+    this.clearGamers();
+  }
 
   setFase(fase: number) {
     this.fase = fase;
@@ -47,6 +48,15 @@ export class GameService {
     }
   }
 
+  clearGamers() {
+    // TODO: Voltar para ['']
+    this.gamers = ['Daniel', 'Alini', 'Filipe', 'Alejandro', ''];
+    // Voltar para 0
+    this.fase = 2;
+    this.actualGamer = 0;
+    this.allGamersChoosen = false;
+  }
+
   updateGamer(index: number, newName: string) {
     if (index > -1) {
       newName = newName.trim();
@@ -70,16 +80,18 @@ export class GameService {
     return this.gamers.filter((gamer) => gamer.trim() !== '');
   }
 
-  getNextGamer() {
+  getActualGamer() {
+    return this.gamers[this.actualGamer];
+  }
+
+  nextGamer() {
     if (!this.allGamersChoosen) {
-      if ((this.actualGamer + 1) == this.getGamers().length) {
+      if ((this.actualGamer + 1) >= this.getGamers().length) {
         this.allGamersChoosen = true;
       }
 
-      return this.gamers[this.actualGamer++];
+      this.actualGamer += (this.actualGamer >= this.getGamers().length) ? 0 : 1;
     }
-
-    return '';
   }
 
   isAllGamersChoosen() {

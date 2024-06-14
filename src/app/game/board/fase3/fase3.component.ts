@@ -19,7 +19,7 @@ export class Fase3Component {
     btn?.classList.add('active');
     board?.classList.add('by');
     setTimeout(() => {
-      this.service.nextFase();
+      this.service.clearGamers();
       // Remoção de efeitos
       btn?.classList.remove('active');
       board?.classList.remove('by');

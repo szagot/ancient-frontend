@@ -1,11 +1,9 @@
 <div class="board">
     <h1 class="blueShadow">Personagem para...</h1>
-    <h2 class="blueShadow">{{getNextGamer()}}</h2>
-    <p>{{getNextGamer()}}</p>
-    <p>{{getNextGamer()}}</p>
-    <p>{{getNextGamer()}}</p>
+    <h2 class="blueShadow">{{actualGamer}}</h2>
 
-    <p>O escolhido é {{chooseOutOfLoop()}}</p>
+    <p>O escolhido é {{chooseOutOfLoop}}</p>
 </div>
 
-<button class="btn next blueShadow" (click)="nextFase()" *ngIf="isAllGamersChoosen()">Próximo</button>
+<button class="btn next blueShadow" (click)="nextGamer()" *ngIf="!isAllGamersChoosen()">Próximo</button>
+<button class="btn next blueShadow" (click)="nextFase()" *ngIf="isAllGamersChoosen()">Começar!</button>

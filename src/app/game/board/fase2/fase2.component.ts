@@ -12,31 +12,35 @@ import { CommonModule } from '@angular/common';
   styleUrl: './fase2.component.scss'
 })
 export class Fase2Component {
-  constructor(private service: GameService){  }
+  actualGamer: string = '';
+  chooseOutOfLoop: string = '';
+
+  constructor(private service: GameService) {
+    this.setActualGamer();
+    this.chooseOutOfLoop = this.service.chooseOutOfLoop();
+  }
 
   getGamers() {
     return this.service.getGamers();
   }
 
-  /**
-   * Retorna a pessoa escolhida para estar fora do loop
-   */
-  chooseOutOfLoop(){
-    return this.service.chooseOutOfLoop();
+  setActualGamer() {
+    this.actualGamer = this.service.getActualGamer();
   }
 
-  getNextGamer(){
-    return this.service.getNextGamer();
+  nextGamer() {
+    this.service.nextGamer();
+    this.setActualGamer();
   }
 
-  isAllGamersChoosen(){
+  isAllGamersChoosen() {
     return this.service.isAllGamersChoosen();
   }
 
   nextFase() {
     const btn = document.querySelector('.next');
     const board = document.querySelector('.board');
-    
+
     // Efeitos
     btn?.classList.add('active');
     board?.classList.add('by');
