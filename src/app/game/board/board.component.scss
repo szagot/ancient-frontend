@@ -3,7 +3,13 @@
     height: calc(100vh - 40px);
     border-radius: 10px;
     overflow: hidden;
-    background: radial-gradient(circle at 50% 30%, #0077ea, #1f4f96, #1b2949, #000);
+    background: radial-gradient(circle at 50% 28%, #0077ea, #1f4f96, #1b2949, #000);
+
+    @media (max-width: 767px){
+        height: 100vh;
+        border: 0 none;
+        border-radius: 0;
+    }
 
     &>* {
         position: relative;
@@ -14,7 +20,7 @@
         content: '';
         display: block;
         position: absolute;
-        opacity: 0.4;
+        opacity: 0.05;
         top: 0;
         left: 0;
         width: 100%;

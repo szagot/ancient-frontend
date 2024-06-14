@@ -12,5 +12,5 @@
     <button *ngIf="!show" class="btn btn-primary form-control btn-show" (click)="showPerson()">Ver Personagem</button>
 </div>
 
-<button class="btn next blueShadow" (click)="nextGamer()" *ngIf="!isAllGamersChoosen()">Próximo</button>
-<button class="btn next blueShadow" (click)="nextFase()" *ngIf="isAllGamersChoosen()">Começar!</button>
+<button class="btn next blueShadow" (click)="nextGamer()" *ngIf="!isAllGamersChoosen() && show">Próximo</button>
+<button class="btn next blueShadow" (click)="nextFase()" *ngIf="isAllGamersChoosen() && show">Começar!</button>
