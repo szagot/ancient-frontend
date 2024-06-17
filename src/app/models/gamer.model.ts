@@ -1,9 +1,10 @@
 export class Gamer {
     name: string = '';
-    points: number = 0;
+    points: number;
 
-    constructor(gamerName = '') {
+    constructor(gamerName = '', points = 0) {
         this.setName(gamerName);
+        this.points = points;
     }
 
     setName(name: string) {
