@@ -13,7 +13,6 @@ echo '------'
 echo 'Compilando...'
 echo ''
 rm -rf dist
-rm -rf .angular
 npm run build:prod
 
 echo '------'
