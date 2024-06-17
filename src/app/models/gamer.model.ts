@@ -11,10 +11,24 @@ export class Gamer {
         this.name = name.replace(/\s+/, '');
     }
 
-    // Pontos para queme stá fora da rodada: 25 * a quantidade dos demais jogadores.
-    addPoints(isChoosenOne = false, qtGamers = 4) {
-        const pointBase = 25;
-        this.points += isChoosenOne ? ((qtGamers - 1) * pointBase) : pointBase;
+    /**
+     * Cada jogador recebe 25 pontos por acertar quem está fora da rodada.
+     * O escolhido para estar fora da rodada recebe 50 pontos se a maioria não descobrir que ele está fora da rodada
+     * 
+     * @param choosenOne É o escolhido para estar fora da rodada?
+     */
+    addPoints(choosenOne = false) {
+        this.points += choosenOne ? 50 : 25;
+    }
+
+    /**
+     * Cada jogador recebe 100 pontos se a maioria descobrir quem está fora da rodada.
+     * O escolhido para estar fora da rodada recebe recebe 125 pontos se advinhar o personagem.
+     * 
+     * @param choosenOne É o escolhido para estar fora da rodada?
+     */
+    addBonus(choosenOne = false) {
+        this.points += choosenOne ? 125 : 100;
     }
 
     isValidName() {

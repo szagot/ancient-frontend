@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { GameService } from '../../../services/game.service';
 
 @Component({
-  selector: 'app-fase3',
+  selector: 'app-fase4',
   standalone: true,
   imports: [],
-  templateUrl: './fase3.component.html',
-  styleUrl: './fase3.component.scss'
+  templateUrl: './fase4.component.html',
+  styleUrl: './fase4.component.scss'
 })
-export class Fase3Component {
+export class Fase4Component {
   constructor(private service: GameService){  }
 
   nextFase() {
@@ -19,6 +19,12 @@ export class Fase3Component {
     btn?.classList.add('active');
     board?.classList.add('by');
     setTimeout(() => {
+      // TODO: Remover a soma automática de pontos
+      const choosenOne = this.service.getChooseOutOfLoop();
+      this.service.getGamerByName('daniel')?.addPoints(choosenOne.name.toLowerCase() == 'daniel');
+      this.service.getGamerByName('sara')?.addPoints(choosenOne.name.toLowerCase() == 'daniel');
+      choosenOne.addBonus(true);
+
       this.service.nextFase();
       // Remoção de efeitos
       btn?.classList.remove('active');

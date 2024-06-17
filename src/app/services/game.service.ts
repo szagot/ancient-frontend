@@ -16,6 +16,7 @@ export class GameService {
   allGamersChoosen: boolean = false;
   loopQuestions: Question[] = [];
   personChoosen: Person = new Person();
+  choosenOne: Gamer = new Gamer();
 
   constructor(
     private questionService: QuestionsService,
@@ -29,7 +30,7 @@ export class GameService {
   }
 
   nextFase() {
-    this.fase = (this.fase < 3) ? (this.fase + 1) : 0
+    this.fase = (this.fase < 4) ? (this.fase + 1) : 0
     this.configFase();
   }
 
@@ -37,6 +38,9 @@ export class GameService {
     if (this.fase == 1) {
       this.setLoopPerson();
       this.setLoopQuestions();
+    }
+    if (this.fase == 0) {
+      this.clearGamers();
     }
   }
 
@@ -52,16 +56,17 @@ export class GameService {
   }
 
   getTotalPoints() {
-    return this.gamers.reduce((total, gamer) => total + gamer.points, 0);
+    return this.getGamers().reduce((total, gamer) => total + gamer.points, 0);
   }
 
-  chooseOutOfLoop() {
-    if (!this.getGamers().length) {
-      return new Gamer();
+  getChooseOutOfLoop() {
+    if (this.choosenOne.isValidName() || !this.getGamers().length) {
+      return this.choosenOne;
     }
 
     const randomIndex = Math.floor(Math.random() * this.getGamers().length);
-    return this.getGamers()[randomIndex];
+    this.choosenOne = this.getGamers()[randomIndex] || new Gamer();
+    return this.choosenOne;
   }
 
   removeGamer(index: number) {
@@ -74,7 +79,7 @@ export class GameService {
    * @param newLoop Se true, zera os jogadores também
    */
   clearGamers(newLoop = false) {
-    // this.gamers = [new Gamer('Daniel', 75), new Gamer('Alini'), new Gamer('Alejandro'), new Gamer('Filipe'), new Gamer('')]; // TODO: remover essa linha
+    // this.gamers = [new Gamer('Daniel', 75), new Gamer('Alini', 25), new Gamer('Alejandro', 25), new Gamer('Filipe', 25), new Gamer('')]; // TODO: remover essa linha
     if (newLoop) {
       this.gamers.forEach(gamer => gamer.points = 0);
     }
@@ -83,7 +88,9 @@ export class GameService {
     this.allGamersChoosen = false;
     this.personChoosen = new Person();
     this.loopQuestions = [];
-    this.configFase();
+    if (this.fase > 0) {
+      this.configFase();
+    }
   }
 
   updateGamer(index: number, newName: string) {
@@ -98,7 +105,7 @@ export class GameService {
   }
 
   getGamerByName(search: string) {
-    return this.gamers.some(gamer => gamer.name.toLowerCase() === search.toLowerCase());
+    return this.gamers.filter(gamer => gamer.name.toLowerCase() === search.toLowerCase())[0];
   }
 
   getGamers(onlyValid: boolean = true) {
@@ -127,7 +134,7 @@ export class GameService {
   }
 
   numberOfGamersIsValid() {
-    return this.getGamers().length > 3;
+    return this.getGamers().length > 2;
   }
 
   setLoopPerson() {

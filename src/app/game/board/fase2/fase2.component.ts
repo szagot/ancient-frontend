@@ -19,7 +19,7 @@ export class Fase2Component {
 
   constructor(private service: GameService) {
     this.setActualGamer();
-    this.chooseOutOfLoop = this.service.chooseOutOfLoop();
+    this.chooseOutOfLoop = this.service.getChooseOutOfLoop();
   }
 
   getGamers() {

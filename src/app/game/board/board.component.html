@@ -5,18 +5,23 @@
         <app-fase0 />
     </div>
     
-    <!-- Fase 1: Seleção de personagens -->
+    <!-- Fase 1: Seleção de jopgadores -->
     <div *ngIf="service.getFase()==1">
         <app-fase1 />
     </div>
     
-    <!-- Fase 2: Perguntas -->
+    <!-- Fase 2: Personagens -->
     <div *ngIf="service.getFase()==2">
         <app-fase2 />
     </div>
     
-    <!-- Fase 3: Final - quem ganhou -->
+    <!-- Fase 3: Perguntas -->
     <div *ngIf="service.getFase()==3">
         <app-fase3 />
+    </div>
+    
+    <!-- Fase 4: Final - Votação e quem Ganhou -->
+    <div *ngIf="service.getFase()==4">
+        <app-fase4 />
     </div>
 </div>
