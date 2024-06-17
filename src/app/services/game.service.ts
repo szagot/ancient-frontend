@@ -3,6 +3,7 @@ import { Question } from '../models/question.model';
 import { Person } from '../models/person.model';
 import { QuestionsService } from './questions.service';
 import { PeopleService } from './people.service';
+import { Gamer } from '../models/gamer.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { PeopleService } from './people.service';
 export class GameService {
 
   fase: number = 0;
-  gamers: string[] = [''];
+  gamers: Gamer[] = [new Gamer()];
   actualGamerIndex: number = 0;
   allGamersChoosen: boolean = false;
   loopQuestions: Question[] = [];
@@ -39,16 +40,16 @@ export class GameService {
     return this.fase;
   }
 
-  addGamer(gamer: string) {
-    gamer = gamer.trim();
-    if (!this.getGamerByName(gamer)) {
+  addGamer(gamerName: string) {
+    const gamer = new Gamer(gamerName);
+    if (!this.getGamerByName(gamer.name)) {
       this.gamers.push(gamer);
     }
   }
 
   chooseOutOfLoop() {
     if (!this.getGamers().length) {
-      return '';
+      return new Gamer();
     }
 
     const randomIndex = Math.floor(Math.random() * this.getGamers().length);
@@ -62,6 +63,8 @@ export class GameService {
   }
 
   clearGamers() {
+    // TODO: remover essa linha
+    // this.gamers = [new Gamer('Daniel'), new Gamer('Alini'), new Gamer('Alejandro'), new Gamer('Filipe'), new Gamer('')];
     this.fase = 0;
     this.actualGamerIndex = 0;
     this.allGamersChoosen = false;
@@ -73,7 +76,7 @@ export class GameService {
     if (index > -1) {
       newName = newName.trim();
       if (!this.getGamerByName(newName)) {
-        this.gamers[index] = newName;
+        this.gamers[index].name = newName;
       } else {
         this.removeGamer(index);
       }
@@ -81,7 +84,7 @@ export class GameService {
   }
 
   getGamerByName(search: string) {
-    return this.gamers.some(gamer => gamer.toLowerCase() === search.toLowerCase());
+    return this.gamers.some(gamer => gamer.name.toLowerCase() === search.toLowerCase());
   }
 
   getGamers(onlyValid: boolean = true) {
@@ -89,7 +92,7 @@ export class GameService {
       return this.gamers;
     }
 
-    return this.gamers.filter((gamer) => gamer.replace(/\s+/, '') !== '');
+    return this.gamers.filter((gamer) => gamer.isValidName());
   }
 
   getActualGamer() {

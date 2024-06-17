@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GameService } from '../../../services/game.service';
 import { CommonModule } from '@angular/common';
+import { Gamer } from '../../../models/gamer.model';
 
 @Component({
   selector: 'app-fase2',
@@ -12,8 +13,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './fase2.component.scss'
 })
 export class Fase2Component {
-  actualGamer: string = '';
-  chooseOutOfLoop: string = '';
+  actualGamer: Gamer = new Gamer();
+  chooseOutOfLoop: Gamer =  new Gamer();
   show: boolean = false;
 
   constructor(private service: GameService) {
@@ -59,7 +60,6 @@ export class Fase2Component {
   }
 
   getPersonChoosen() {
-    console.log(this.service.getLoopQuestions());
     return this.service.getLoopPerson();
   }
 }
