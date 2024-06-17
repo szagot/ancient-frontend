@@ -30,6 +30,10 @@ export class GameService {
 
   nextFase() {
     this.fase = (this.fase < 3) ? (this.fase + 1) : 0
+    this.configFase();
+  }
+
+  configFase() {
     if (this.fase == 1) {
       this.setLoopPerson();
       this.setLoopQuestions();
@@ -47,6 +51,10 @@ export class GameService {
     }
   }
 
+  getTotalPoints() {
+    return this.gamers.reduce((total, gamer) => total + gamer.points, 0);
+  }
+
   chooseOutOfLoop() {
     if (!this.getGamers().length) {
       return new Gamer();
@@ -62,14 +70,20 @@ export class GameService {
     }
   }
 
-  clearGamers() {
-    // TODO: remover essa linha
-    // this.gamers = [new Gamer('Daniel'), new Gamer('Alini'), new Gamer('Alejandro'), new Gamer('Filipe'), new Gamer('')];
-    this.fase = 0;
+  /**
+   * @param newLoop Se true, zera os jogadores também
+   */
+  clearGamers(newLoop = false) {
+    // this.gamers = [new Gamer('Daniel', 75), new Gamer('Alini'), new Gamer('Alejandro'), new Gamer('Filipe'), new Gamer('')]; // TODO: remover essa linha
+    if (newLoop) {
+      this.gamers.forEach(gamer => gamer.points = 0);
+    }
+    this.fase = (this.getTotalPoints() > 0 && !newLoop) ? 1 : 0;
     this.actualGamerIndex = 0;
     this.allGamersChoosen = false;
     this.personChoosen = new Person();
     this.loopQuestions = [];
+    this.configFase();
   }
 
   updateGamer(index: number, newName: string) {
@@ -88,7 +102,7 @@ export class GameService {
   }
 
   getGamers(onlyValid: boolean = true) {
-    if (!onlyValid) {
+    if (!onlyValid && this.getTotalPoints() == 0) {
       return this.gamers;
     }
 

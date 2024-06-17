@@ -5,14 +5,16 @@
             <label class="input-group-text" for="gamer-{{i}}">{{ (i + 1).toString().padStart(2, '0') }}</label>
             <input type="text" class="form-control gamerName" id="gamer-{{i}}" [value]="gamer.name"
                 (change)="onGamerChange(i, $event)">
-            <button *ngIf="!gamer" class="btn btn-default input-group-text">
+            <span *ngIf="getTotalPoints() > 0" class="input-group-text points">{{gamer.points}}</span>
+            <button *ngIf="!gamer.isValidName() && getTotalPoints() == 0" class="btn btn-default input-group-text">
                 <i class="bi bi-plus-circle-fill"></i>
             </button>
-            <button *ngIf="gamer" class="btn btn-default input-group-text" (click)="removeGamer(i)">
+            <button *ngIf="gamer.isValidName() && getTotalPoints() == 0" class="btn btn-default input-group-text"
+                (click)="removeGamer(i)">
                 <i class="bi bi-dash-circle-fill"></i>
             </button>
-
         </div>
+        <button class="btn blueShadow little" *ngIf="getTotalPoints() > 0" (click)="restartLoop()">Reiniciar Jogo</button>
     </div>
 </div>
-<button class="btn next blueShadow" (click)="nextFase()" *ngIf="numberOfGamersIsValid()">Personagem</button>
+<button class="btn next blueShadow" (click)="nextFase()" *ngIf="numberOfGamersIsValid()">Personagens</button>

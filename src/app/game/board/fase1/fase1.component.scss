@@ -1,5 +1,21 @@
+.gamerName {
+    text-overflow: ellipsis;
+}
+
+.points {
+    flex-direction: row-reverse;
+    width: 60px;
+}
+
 .blueShadow {
     &.active {
         animation: btnOutRight 0.8s ease-out forwards;
+    }
+
+    &.little{
+        position: relative;
+        margin-top: 20px;
+        bottom: auto;
+        font-size: 1.2rem;
     }
 }

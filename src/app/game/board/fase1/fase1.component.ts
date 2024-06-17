@@ -35,6 +35,14 @@ export class Fase1Component {
     return this.service.getGamers(false);
   }
 
+  getTotalPoints() {
+    return this.service.getTotalPoints();
+  }
+
+  restartLoop() {
+    this.service.clearGamers(true);
+  }
+
   removeGamer(index: number) {
     if (this.getGamers()[index]) {
       this.service.removeGamer(index);
