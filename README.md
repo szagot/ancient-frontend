@@ -1,29 +1,6 @@
 # Jogo "Fora da Rodada"
 
-Joguinho para se divertir com a galera!
-
-Deve haver pelo menos 3 jogadores. Porém, quanto mais jogarem, mais difícil e divertido fica!
-
-**Como Jogar?**
-
-1. Cada um vai receber um personagem secreto. Olhe o seu e passe para o próximo.
-2. Um dos jogadores não receberá esse personagem, pois estará marcado como "Fora da Rodada"
-3. Todo mundo terá de adivinhar quem está fora da rodada, e o que está fora deve fingir que saber quem é o personagem
-4. Após descoberto quem está fora da rodada, ele deverá tentar adivinhar o personagem
-
-**Pontuação:**
-
-* 25 pontos para cada jogador que acertar quem está fora da rodada
-* 100 pontos para todos os jogadores que sabem o personagem caso a maioria acerte quem está fora da rodada
-* 50 pontos para o jogador que está fora da rodada se a maioria não acertar que é ele
-* 125 pontos para quem está fora da rodada se ele acertar o personagem secreto
-
-**Quem Ganha?**
-
-Quem tiver mais pontos! (ah vá!)
-
-Joguem algumas rodadas (pelo menos o mesmo tanto de rodadas que há de jogadores).
-Quando não quiserem mais jogar com o time atual, basta ver a pontuação final!
+Sobre o jogo, há um help no canto superior direito no board do game.
 
 ## Development server
 
