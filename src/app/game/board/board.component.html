@@ -1,5 +1,4 @@
 <div class="container outofloop">
-
     <!-- Fase 0: Inicio -->
     <div *ngIf="service.getFase()==0">
         <app-fase0 />
@@ -24,4 +23,13 @@
     <div *ngIf="service.getFase()==4">
         <app-fase4 />
     </div>
+
+    <div *ngIf="helpActive">
+        <app-help />
+    </div>
 </div>
+
+<button class="blueShadow btn small" (click)="toggleHelp()">
+    <i *ngIf="!helpActive" class="bi bi-question-circle-fill"></i>
+    <i *ngIf="helpActive" class="bi bi-x-circle-fill"></i>
+</button>
