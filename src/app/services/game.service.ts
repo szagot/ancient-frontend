@@ -79,7 +79,7 @@ export class GameService {
    * @param newLoop Se true, zera os jogadores também
    */
   clearGamers(newLoop = false) {
-    // this.gamers = [new Gamer('Daniel', 75), new Gamer('Alini', 25), new Gamer('Alejandro', 25), new Gamer('Filipe', 25), new Gamer('')]; // TODO: remover essa linha
+    // this.gamers = [new Gamer('Daniel', 75), new Gamer('Alini', 25), new Gamer('Sara', 25), new Gamer('')]; // TODO: remover essa linha
     if (newLoop) {
       this.gamers.forEach(gamer => gamer.points = 0);
     }
