@@ -1,6 +1,7 @@
 <div class="board">
-    <h1 class="blueShadow">Perguntas</h1>
-    <p>Em breve!</p>
+    <h1 class="blueShadow">{{actualGamer.name}} <small>pergunta para</small></h1>
+    <h1 class="blueShadow">{{getNextGamerQueue().name}}</h1>
 </div>
 
-<button class="btn next blueShadow" (click)="nextFase()">Votação</button>
+<button class="btn next blueShadow" (click)="nextGamer()" *ngIf="!isAllGamersChoosen() || !secondRound">Próximo</button>
+<button class="btn next blueShadow" (click)="nextFase()" *ngIf="isAllGamersChoosen() && secondRound">Votação</button>
