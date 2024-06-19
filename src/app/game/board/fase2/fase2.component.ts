@@ -14,7 +14,7 @@ import { Gamer } from '../../../models/gamer.model';
 })
 export class Fase2Component {
   actualGamer: Gamer = new Gamer();
-  chooseOutOfLoop: Gamer =  new Gamer();
+  chooseOutOfLoop: Gamer = new Gamer();
   show: boolean = false;
 
   constructor(private service: GameService) {
@@ -61,5 +61,13 @@ export class Fase2Component {
 
   getPersonChoosen() {
     return this.service.getLoopPerson();
+  }
+
+  hasEnoughQuestions() {
+    return this.service.hasEnoughQuestions();
+  }
+
+  restartLoop() {
+    this.service.clearGamers(true);
   }
 }

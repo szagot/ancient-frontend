@@ -78,6 +78,22 @@ body {
         }
     }
 
+    .alert {
+        text-transform: uppercase;
+        font-size: 2rem;
+        font-weight: 700;
+        color: whitesmoke;
+        text-shadow: -1px 0 1px #aa0000, 0 1px 1px #aa0000, 1px 0 1px #aa0000, 0 -1px 1px #aa0000, -2px 0 5px #ea0000,
+            0 2px 5px #ea0000, 2px 0 5px #ea0000, 0 -2px 5px #ea0000, -4px 0 10px #c90000, 0 4px 10px #c90000,
+            4px 0 10px #c90000, 0 -4px 10px #c90000;
+        position: absolute;
+        left: 50%;
+        top: 50px;
+        transform: translate(-50%, 0);
+        text-align: center;
+        width: 100%;
+    }
+
     h1.blueShadow {
         font-size: 3em;
         text-align: center;

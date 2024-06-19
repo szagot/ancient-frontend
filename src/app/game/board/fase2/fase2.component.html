@@ -1,4 +1,9 @@
-<div class="board">
+<div class="alert" *ngIf="!hasEnoughQuestions()">
+    Cadastre mais perguntas!
+
+    <button class="btn blueShadow little" (click)="restartLoop()">Reiniciar Jogo</button>
+</div>
+<div class="board" *ngIf="hasEnoughQuestions()">
     <h1 class="blueShadow">Personagem para...</h1>
     <h2 class="blueShadow">{{actualGamer.name}}</h2>
 

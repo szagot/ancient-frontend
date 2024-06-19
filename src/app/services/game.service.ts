@@ -37,6 +37,8 @@ export class GameService {
   configFase() {
     if (this.fase == 1) {
       this.setLoopPerson();
+    }
+    if (this.fase == 2) {
       this.setLoopQuestions();
     }
     if (this.fase == 0) {
@@ -80,8 +82,8 @@ export class GameService {
    */
   clearGamers(newLoop = false) {
     // TODO: remover essa linha
-    // if (!this.allGamersChoosen) this.gamers = [new Gamer('Daniel', 75), new Gamer('Alini', 25), new Gamer('Sara', 25), new Gamer()]; 
-   
+    if (!this.allGamersChoosen) this.gamers = [new Gamer('Daniel', 75), new Gamer('Alini', 25), new Gamer('Sara', 25), new Gamer()]; 
+
     if (newLoop) {
       this.gamers.forEach(gamer => gamer.points = 0);
     }
@@ -132,7 +134,7 @@ export class GameService {
     }
   }
 
-  restartCountGamer(){
+  restartCountGamer() {
     this.allGamersChoosen = false;
     this.actualGamerIndex = 0
   }
@@ -177,14 +179,18 @@ export class GameService {
       const questionShuffle = this.shuffleArray(questions);
 
       const qtQuestions = this.getGamers().length * 2;
-      for (let i = 0; i <= qtQuestions; i++) {
-        if (i >= questionShuffle.length) {
+      for (let i = 0; i < qtQuestions; i++) {
+        if (i >= questionShuffle.length - 1) {
           break;
         }
 
         this.loopQuestions.push(questionShuffle[i]);
       }
     });
+  }
+
+  hasEnoughQuestions() {
+    return (this.getGamers().length * 2) == this.loopQuestions.length;
   }
 
   getLoopPerson() {
