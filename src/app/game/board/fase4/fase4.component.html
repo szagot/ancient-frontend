@@ -1,5 +1,24 @@
 <div class="board">
-    <p>Em breve!</p>
+    <div class="votes" *ngIf="!votationFinished">
+        <h1 class="blueShadow">{{actualGamer.name}}</h1>
+        <h2 class="blueShadow">Quem está fora da rodada?</h2>
+
+        <div class="border">
+            <div *ngFor="let gamer of gamers; index as i">
+                <button class="btn btn-primary form-control" (click)="vote(actualGamer, i); nextGamer()">{{gamer.name}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="person" *ngIf="votationFinished">
+        <h1 class="blueShadow">{{outOfTheLoopGamer.name}}</h1>
+        <h2 class="blueShadow">Qual o personagem da rodada?</h2>
+        
+        <div class="border">
+            <div *ngFor="let person of outOfTheLoopPeople">
+                <button class="btn btn-primary form-control" (click)="countingVotes(person.id)">{{person.name}}</button>
+            </div>
+        </div>
+    </div>
 </div>
 
-<button class="btn next blueShadow" (click)="nextFase()">Fim</button>
+<button class="btn next blueShadow" (click)="nextFase()" *ngIf="bonusConceded">Outra Rodada!</button>

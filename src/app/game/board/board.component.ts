@@ -4,8 +4,8 @@ import { Fase0Component } from './fase0/fase0.component';
 import { Fase1Component } from './fase1/fase1.component';
 import { Fase2Component } from './fase2/fase2.component';
 import { Fase3Component } from './fase3/fase3.component';
-import { GameService } from '../../services/game.service';
 import { Fase4Component } from './fase4/fase4.component';
+import { GameService } from '../../services/game.service';
 import { HelpComponent } from '../help/help.component';
 
 @Component({
@@ -27,11 +27,9 @@ export class BoardComponent {
 
   helpActive: boolean = false;
 
-  constructor(public service: GameService){
+  constructor(public service: GameService) { }
 
-  }
-
-  toggleHelp(){
+  toggleHelp() {
     this.helpActive = !this.helpActive;
   }
 

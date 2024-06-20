@@ -1,19 +1,43 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { GameService } from '../../../services/game.service';
 import { Person } from '../../../models/person.model';
+import { Gamer } from '../../../models/gamer.model';
+import { Vote } from '../../../models/vote.model';
 
 @Component({
   selector: 'app-fase4',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule,
+  ],
   templateUrl: './fase4.component.html',
   styleUrl: './fase4.component.scss'
 })
 export class Fase4Component {
-  outOfTheLoopPeople: Person[] = [];
+  outOfTheLoopPeople: Person[];
+  votationFinished: boolean;
+  votes: Vote[];
+  actualGamer: Gamer;
+  gamers: Gamer[];
+  outOfLoopRight: boolean;
+  totalRihtVotes: number;
+  totalWrongVotes: number;
+  bonusConceded: boolean;
+  outOfTheLoopGamer: Gamer;
 
   constructor(private service: GameService) {
-    this.setOutOfTheLoopPeople();
+    this.votationFinished = false;
+    this.votes = [];
+    this.service.restartCountGamer();
+    this.actualGamer = this.service.getActualGamer();
+    this.gamers = this.service.getGamers();
+    this.outOfLoopRight = false;
+    this.bonusConceded = false;
+    this.totalRihtVotes = 0;
+    this.totalWrongVotes = 0;
+    this.outOfTheLoopPeople = this.service.getOutOfLoopPeople();
+    this.outOfTheLoopGamer = this.service.getChooseOutOfLoop();
   }
 
   nextFase() {
@@ -24,12 +48,6 @@ export class Fase4Component {
     btn?.classList.add('active');
     board?.classList.add('by');
     setTimeout(() => {
-      // TODO: Remover a soma automática de pontos
-      const choosenOne = this.service.getChooseOutOfLoop();
-      this.service.getGamerByName('daniel')?.addPoints(choosenOne.name.toLowerCase() == 'daniel');
-      this.service.getGamerByName('sara')?.addPoints(choosenOne.name.toLowerCase() == 'daniel');
-      choosenOne.addBonus(true);
-
       this.service.nextFase();
       // Remoção de efeitos
       btn?.classList.remove('active');
@@ -37,10 +55,57 @@ export class Fase4Component {
     }, 1000);
   }
 
-  setOutOfTheLoopPeople() {
-    this.outOfTheLoopPeople = this.service.getOutOfLoopPeople();
+  nextGamer() {
+    this.service.nextGamer();
+    this.actualGamer = this.service.getActualGamer();
+  }
 
-    // TODO: Apagar console
-    console.log(this.outOfTheLoopPeople);
+  vote(gamer: Gamer, chosenIndex: number) {
+    if (this.votationFinished) {
+      return;
+    }
+
+    const choosen = this.gamers[chosenIndex];
+    const outOfLoop = this.service.getLoopPerson();
+    this.votes.push(new Vote(gamer, choosen));
+
+    // Adiciona pontuação individual se o jogador escolheu corretamente quem está fora da rodada (exceto ele próprio)
+    if (gamer.name != outOfLoop.name) {
+      if (choosen.name == outOfLoop.name) {
+        gamer.addPoints();
+        this.totalRihtVotes++;
+      } else {
+        this.totalWrongVotes++;
+      }
+    }
+
+    this.votationFinished = this.votes.length == this.gamers.length;
+  }
+
+  /**
+   * Quem está fora do loop escolhe o personagem, e os pontos são distribuídos
+   * 
+   * @param outOfLoopPerson ID do personagem escolhido pelo jogador fora da jogada
+   */
+  countingVotes(outOfLoopPerson: number) {
+    this.outOfLoopRight = outOfLoopPerson == this.service.getLoopPerson().id;
+    if (this.outOfLoopRight) {
+      this.outOfTheLoopGamer.addBonus(true);
+    }
+
+    // Concedento bonus
+    this.gamers.forEach((gamer: Gamer) => {
+      if (gamer.name == this.outOfTheLoopGamer.name) {
+        if (this.totalWrongVotes > this.totalRihtVotes) {
+          gamer.addPoints(true);
+        }
+      } else {
+        if (this.totalRihtVotes > this.totalWrongVotes) {
+          gamer.addBonus();
+        }
+      }
+    });
+
+    this.bonusConceded = true;
   }
 }
