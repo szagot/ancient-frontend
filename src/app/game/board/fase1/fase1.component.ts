@@ -23,6 +23,7 @@ export class Fase1Component {
     // Efeitos
     btn?.classList.add('active');
     board?.classList.add('by');
+    this.service.setLoopQuestions();
     setTimeout(() => {
       this.service.nextFase();
       // Remoção de efeitos
