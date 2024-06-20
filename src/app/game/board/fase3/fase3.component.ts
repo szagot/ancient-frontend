@@ -78,8 +78,6 @@ export class Fase3Component {
 
   setActualQuestion() {
     this.actualQuestion = this.service.getLoopQuestions()[this.actualQuestionIndex++] || new Question();
-    console.log(this.service.getLoopQuestions(), this.actualQuestion);
-
     return this.actualQuestion;
   }
 }

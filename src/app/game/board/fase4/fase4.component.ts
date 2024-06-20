@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GameService } from '../../../services/game.service';
+import { Person } from '../../../models/person.model';
 
 @Component({
   selector: 'app-fase4',
@@ -9,12 +10,16 @@ import { GameService } from '../../../services/game.service';
   styleUrl: './fase4.component.scss'
 })
 export class Fase4Component {
-  constructor(private service: GameService){  }
+  outOfTheLoopPeople: Person[] = [];
+
+  constructor(private service: GameService) {
+    this.setOutOfTheLoopPeople();
+  }
 
   nextFase() {
     const btn = document.querySelector('.next');
     const board = document.querySelector('.board');
-    
+
     // Efeitos
     btn?.classList.add('active');
     board?.classList.add('by');
@@ -30,5 +35,12 @@ export class Fase4Component {
       btn?.classList.remove('active');
       board?.classList.remove('by');
     }, 1000);
+  }
+
+  setOutOfTheLoopPeople() {
+    this.outOfTheLoopPeople = this.service.getOutOfLoopPeople();
+
+    // TODO: Apagar console
+    console.log(this.outOfTheLoopPeople);
   }
 }
