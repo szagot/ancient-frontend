@@ -18,7 +18,14 @@ body {
 }
 
 .outofloop {
-    font: 16px 'Pacifico', 'Kaushan Script', Futura, 'Roboto', 'Trebuchet MS', Helvetica, sans-serif;
+    font:
+        16px 'Pacifico',
+        'Kaushan Script',
+        Futura,
+        'Roboto',
+        'Trebuchet MS',
+        Helvetica,
+        sans-serif;
 
     .board {
         opacity: 1;
@@ -50,6 +57,28 @@ body {
                 background-color: whitesmoke;
                 border-color: rgba(0, 36, 70, 0.4);
                 color: #0058aa;
+                &.btn {
+                    margin-bottom: 10px;
+                    color: white;
+                    text-shadow: 1px 1px 5px #000000;
+                    background: rgb(0, 119, 234);
+                    background: radial-gradient(circle, #0077ea 0%, #001426 100%);
+
+                    &:active,
+                    &:hover {
+                        background: radial-gradient(circle, #001426 0%, #0077ea 100%);
+                    }
+
+                    &.choose {
+                        background: radial-gradient(
+                            circle,
+                            rgba(1, 38, 0, 1) 0%,
+                            rgba(16, 98, 0, 1) 47%,
+                            rgba(24, 124, 2, 1) 66%,
+                            rgba(36, 181, 0, 1) 100%
+                        );
+                    }
+                }
             }
         }
     }
@@ -58,9 +87,19 @@ body {
         font-size: 2.5rem;
         font-weight: 700;
         color: whitesmoke;
-        text-shadow: -1px 0 1px #0058aa, 0 1px 1px #0058aa, 1px 0 1px #0058aa, 0 -1px 1px #0058aa, -2px 0 5px #0077ea,
-            0 2px 5px #0077ea, 2px 0 5px #0077ea, 0 -2px 5px #0077ea, -4px 0 10px #0068c9, 0 4px 10px #0068c9,
-            4px 0 10px #0068c9, 0 -4px 10px #0068c9;
+        text-shadow:
+            -1px 0 1px #0058aa,
+            0 1px 1px #0058aa,
+            1px 0 1px #0058aa,
+            0 -1px 1px #0058aa,
+            -2px 0 5px #0077ea,
+            0 2px 5px #0077ea,
+            2px 0 5px #0077ea,
+            0 -2px 5px #0077ea,
+            -4px 0 10px #0068c9,
+            0 4px 10px #0068c9,
+            4px 0 10px #0068c9,
+            0 -4px 10px #0068c9;
 
         &.btn {
             border: 0 none !important;
@@ -83,9 +122,19 @@ body {
         font-size: 2rem;
         font-weight: 700;
         color: whitesmoke;
-        text-shadow: -1px 0 1px #aa0000, 0 1px 1px #aa0000, 1px 0 1px #aa0000, 0 -1px 1px #aa0000, -2px 0 5px #ea0000,
-            0 2px 5px #ea0000, 2px 0 5px #ea0000, 0 -2px 5px #ea0000, -4px 0 10px #c90000, 0 4px 10px #c90000,
-            4px 0 10px #c90000, 0 -4px 10px #c90000;
+        text-shadow:
+            -1px 0 1px #aa0000,
+            0 1px 1px #aa0000,
+            1px 0 1px #aa0000,
+            0 -1px 1px #aa0000,
+            -2px 0 5px #ea0000,
+            0 2px 5px #ea0000,
+            2px 0 5px #ea0000,
+            0 -2px 5px #ea0000,
+            -4px 0 10px #c90000,
+            0 4px 10px #c90000,
+            4px 0 10px #c90000,
+            0 -4px 10px #c90000;
         position: absolute;
         left: 50%;
         top: 50px;
@@ -126,17 +175,36 @@ body {
 }
 
 @keyframes pulsar {
-
     0%,
     100% {
-        text-shadow: -1px 0 1px #0058aa, 0 1px 1px #0058aa, 1px 0 1px #0058aa, 0 -1px 1px #0058aa, -2px 0 5px #0077ea,
-            0 2px 5px #0077ea, 2px 0 5px #0077ea, 0 -2px 5px #0077ea, -4px 0 10px #0068c9, 0 4px 10px #0068c9,
-            4px 0 10px #0068c9, 0 -4px 10px #0068c9;
+        text-shadow:
+            -1px 0 1px #0058aa,
+            0 1px 1px #0058aa,
+            1px 0 1px #0058aa,
+            0 -1px 1px #0058aa,
+            -2px 0 5px #0077ea,
+            0 2px 5px #0077ea,
+            2px 0 5px #0077ea,
+            0 -2px 5px #0077ea,
+            -4px 0 10px #0068c9,
+            0 4px 10px #0068c9,
+            4px 0 10px #0068c9,
+            0 -4px 10px #0068c9;
     }
 
     50% {
-        text-shadow: -1px 0 1px #004080, 0 1px 1px #004080, 1px 0 1px #004080, 0 -1px 1px #004080, -2px 0 5px #0050b0,
-            0 2px 5px #0050b0, 2px 0 5px #0050b0, 0 -2px 5px #0050b0, -4px 0 10px #0045a0, 0 4px 10px #0045a0,
-            4px 0 10px #0045a0, 0 -4px 10px #0045a0;
+        text-shadow:
+            -1px 0 1px #004080,
+            0 1px 1px #004080,
+            1px 0 1px #004080,
+            0 -1px 1px #004080,
+            -2px 0 5px #0050b0,
+            0 2px 5px #0050b0,
+            2px 0 5px #0050b0,
+            0 -2px 5px #0050b0,
+            -4px 0 10px #0045a0,
+            0 4px 10px #0045a0,
+            4px 0 10px #0045a0,
+            0 -4px 10px #0045a0;
     }
 }

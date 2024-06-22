@@ -5,8 +5,10 @@
 
         <div class="border">
             <div *ngFor="let gamer of gamers; index as i">
-                <button class="btn btn-primary form-control" (click)="vote(actualGamer, i); nextGamer()">{{gamer.name}}</button>
+                <button class="btn btn-primary form-control" (click)="preVote(i)" id="gamer-{{i}}">{{gamer.name}}</button>
             </div>
+
+            <button *ngIf="activeNext >= 0" class="btn blueShadow" (click)="nextGamer()">Próximo</button>
         </div>
     </div>
     <div class="person" *ngIf="votationFinished">

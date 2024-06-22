@@ -25,6 +25,7 @@ export class Fase4Component {
   totalWrongVotes: number;
   bonusConceded: boolean;
   outOfTheLoopGamer: Gamer;
+  activeNext: number;
 
   constructor(private service: GameService) {
     this.votationFinished = false;
@@ -36,6 +37,7 @@ export class Fase4Component {
     this.bonusConceded = false;
     this.totalRihtVotes = 0;
     this.totalWrongVotes = 0;
+    this.activeNext = -1;
     this.outOfTheLoopPeople = this.service.getOutOfLoopPeople();
     this.outOfTheLoopGamer = this.service.getChooseOutOfLoop();
   }
@@ -56,8 +58,21 @@ export class Fase4Component {
   }
 
   nextGamer() {
+    this.vote(this.actualGamer, this.activeNext);
     this.service.nextGamer();
     this.actualGamer = this.service.getActualGamer();
+    this.activeNext = -1;
+    document.querySelectorAll('.btn-primary')?.forEach((e) => { e.classList.remove('choose'); })
+  }
+
+  preVote(chosenIndex: number) {
+    this.activeNext = chosenIndex;
+    document.querySelectorAll('.btn-primary')?.forEach((e) => { e.classList.remove('choose'); })
+    const gamer = document.getElementById(`gamer-${chosenIndex}`);
+    if (gamer) {
+      console.log(gamer);
+      gamer.classList.add('choose');
+    }
   }
 
   vote(gamer: Gamer, chosenIndex: number) {

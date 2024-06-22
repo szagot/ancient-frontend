@@ -14,7 +14,16 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './fase1.component.scss'
 })
 export class Fase1Component {
-  constructor(private service: GameService) { }
+  constructor(private service: GameService) {
+    if (!this.getTotalPoints()) {
+      setTimeout(() => {
+        const lastInput = document.getElementById('gamer-0');
+        if (lastInput) {
+          lastInput.focus();
+        }
+      }, 100);
+    }
+  }
 
   nextFase() {
     const btn = document.querySelector('.next');
@@ -62,16 +71,18 @@ export class Fase1Component {
     this.service.updateGamer(index, newValue);
     this.service.addGamer('');
 
-    const lastInput = document.getElementById(`gamer-${index}`);
-    if (lastInput) {
-      lastInput.focus();
+    setTimeout(() => {
+      const lastInput = document.getElementById(`gamer-${index + 1}`);
+      if (lastInput) {
+        lastInput.focus();
 
-      const border = document.querySelector('.border');
-      if (border) {
-        setTimeout(() => {
-          border.scrollTo(0, border.scrollHeight + 100);
-        }, 100);
+        const border = document.querySelector('.border');
+        if (border) {
+          setTimeout(() => {
+            border.scrollTo(0, border.scrollHeight + 100);
+          }, 100);
+        }
       }
-    }
+    }, 100)
   }
 }
