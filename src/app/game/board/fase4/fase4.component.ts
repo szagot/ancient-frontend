@@ -70,7 +70,6 @@ export class Fase4Component {
     document.querySelectorAll('.btn-primary')?.forEach((e) => { e.classList.remove('choose'); })
     const gamer = document.getElementById(`gamer-${chosenIndex}`);
     if (gamer) {
-      console.log(gamer);
       gamer.classList.add('choose');
     }
   }
@@ -81,12 +80,11 @@ export class Fase4Component {
     }
 
     const choosen = this.gamers[chosenIndex];
-    const outOfLoop = this.service.getLoopPerson();
     this.votes.push(new Vote(gamer, choosen));
 
     // Adiciona pontuação individual se o jogador escolheu corretamente quem está fora da rodada (exceto ele próprio)
-    if (gamer.name != outOfLoop.name) {
-      if (choosen.name == outOfLoop.name) {
+    if (gamer.name != this.outOfTheLoopGamer.name) {
+      if (choosen.name == this.outOfTheLoopGamer.name) {
         gamer.addPoints();
         this.totalRihtVotes++;
       } else {
