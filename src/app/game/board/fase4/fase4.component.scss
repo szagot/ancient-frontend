@@ -17,6 +17,12 @@
     }
 }
 
+.blueShadow{
+    &.small {
+        font-size: 2em;
+    }
+}
+
 #outOfTheLoop {
     opacity: 1;
     transition: opacity 0.8s ease-out;
@@ -27,7 +33,6 @@
 }
 
 .border {
-    height: auto !important;
     text-align: center;
     font-size: 1.5em;
 }

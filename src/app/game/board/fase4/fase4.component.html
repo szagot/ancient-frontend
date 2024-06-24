@@ -15,11 +15,11 @@
         <h2 class="blueShadow">Quem está fora da rodada?</h2>
         
         <button *ngIf="!showGetOutOfLoop" class="btn blueShadow big" (click)="showGetOutOfLoopGamer()">?</button>
-        <div *ngIf="showGetOutOfLoop" class="border small">{{outOfTheLoopGamer.name}}</div>
+        <div *ngIf="showGetOutOfLoop" class="border">{{outOfTheLoopGamer.name}}</div>
     </div>
     <div class="person" *ngIf="votationFinished && showPeople">
         <h1 class="blueShadow">{{outOfTheLoopGamer.name}}</h1>
-        <h2 class="blueShadow">Qual o personagem da rodada?</h2>
+        <h2 class="blueShadow small">Qual o personagem secreto?</h2>
         
         <div class="border">
             <div *ngFor="let person of outOfTheLoopPeople">

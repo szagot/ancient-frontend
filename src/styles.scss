@@ -43,7 +43,7 @@ body {
             background: rgba(0, 36, 70, 0.5);
             padding: 20px;
             margin: 20px 0;
-            height: calc(100vh - 350px);
+            max-height: calc(100vh - 350px);
             overflow: hidden;
             overflow-y: auto;
 
