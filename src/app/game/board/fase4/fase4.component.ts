@@ -17,6 +17,8 @@ import { Vote } from '../../../models/vote.model';
 export class Fase4Component {
   outOfTheLoopPeople: Person[];
   votationFinished: boolean;
+  showPeople: boolean;
+  showGetOutOfLoop: boolean;
   votes: Vote[];
   actualGamer: Gamer;
   gamers: Gamer[];
@@ -35,6 +37,8 @@ export class Fase4Component {
     this.gamers = this.service.getGamers();
     this.outOfLoopRight = false;
     this.bonusConceded = false;
+    this.showPeople = false;
+    this.showGetOutOfLoop = false;
     this.totalRihtVotes = 0;
     this.totalWrongVotes = 0;
     this.activeNext = -1;
@@ -120,5 +124,23 @@ export class Fase4Component {
     });
 
     this.bonusConceded = true;
+  }
+
+  showGetOutOfLoopGamer() {
+    this.showGetOutOfLoop = true;
+    setTimeout(() => {
+      const element = document.getElementById('outOfTheLoop');
+      if (element) {
+        element.classList.add('hidden');
+        setTimeout(() => {
+          this.showPeople = true;
+          setTimeout(() => {
+            element.classList.remove('hidden');
+          }, 100);
+        }, 1000);
+      } else {
+        this.showPeople = true;
+      }
+    }, 2000);
   }
 }

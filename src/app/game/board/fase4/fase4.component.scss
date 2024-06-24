@@ -1,6 +1,43 @@
 .btn {
-
     &.active {
         animation: btnOutRight 0.8s ease-out forwards;
+    }
+
+    &.blueShadow {
+        &.big {
+            font-size: 10rem;
+            position: inherit;
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            transition: transform 1s ease;
+            animation: spin 3s linear infinite;
+            transform-origin: center;
+        }
+    }
+}
+
+#outOfTheLoop {
+    opacity: 1;
+    transition: opacity 0.8s ease-out;
+
+    &.hidden {
+        opacity: 0;
+    }
+}
+
+.border {
+    height: auto !important;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(360deg);
     }
 }
