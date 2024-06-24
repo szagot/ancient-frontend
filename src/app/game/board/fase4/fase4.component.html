@@ -12,7 +12,6 @@
         </div>
     </div>
     <div class="person" *ngIf="votationFinished && !showPeople" id="outOfTheLoop">
-        <h1 class="blueShadow">{{outOfTheLoopGamer.name}}</h1>
         <h2 class="blueShadow">Quem está fora da rodada?</h2>
         
         <button *ngIf="!showGetOutOfLoop" class="btn blueShadow big" (click)="showGetOutOfLoopGamer()">?</button>
