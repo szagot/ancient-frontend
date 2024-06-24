@@ -1,7 +1,7 @@
 <div class="board">
     <div class="votes" *ngIf="!votationFinished">
         <h1 class="blueShadow">{{actualGamer.name}}</h1>
-        <h2 class="blueShadow">Quem está fora da rodada?</h2>
+        <h2 class="blueShadow small">Quem está fora da rodada?</h2>
 
         <div class="border">
             <div *ngFor="let gamer of gamers; index as i">
