@@ -69,13 +69,27 @@ body {
                         background: radial-gradient(circle, #001426 0%, #0077ea 100%);
                     }
 
-                    &.choose {
+                    &.isthis:not(.right) {
+                        background: radial-gradient(circle, #012600 0%, #24b500 100%);
+                    }
+
+                    &.choose, &.right  {
                         background: radial-gradient(
                             circle,
-                            rgba(1, 38, 0, 1) 0%,
-                            rgba(16, 98, 0, 1) 47%,
-                            rgba(24, 124, 2, 1) 66%,
-                            rgba(36, 181, 0, 1) 100%
+                            #012600 0%,
+                            #106200 47%,
+                            #187c02 66%,
+                            #24b500 100%
+                        );
+                    }
+
+                    &.wrong  {
+                        background: radial-gradient(
+                            circle,
+                            #260000 0%,
+                            #620000 47%,
+                            #7c0202 66%,
+                            #b50000 100%
                         );
                     }
                 }

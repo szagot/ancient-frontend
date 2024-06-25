@@ -102,10 +102,14 @@ export class Fase4Component {
   /**
    * Quem está fora do loop escolhe o personagem, e os pontos são distribuídos
    * 
-   * @param outOfLoopPerson ID do personagem escolhido pelo jogador fora da jogada
+   * @param outOfLoopPersonId ID do personagem escolhido pelo jogador fora da jogada
    */
-  countingVotes(outOfLoopPerson: number) {
-    this.outOfLoopRight = outOfLoopPerson == this.service.getLoopPerson().id;
+  countingVotes(outOfLoopPersonId: number) {
+    if (this.bonusConceded) {
+      return;
+    }
+
+    this.outOfLoopRight = outOfLoopPersonId == this.service.getLoopPerson().id;
     if (this.outOfLoopRight) {
       this.outOfTheLoopGamer.addBonus(true);
     }
@@ -124,6 +128,20 @@ export class Fase4Component {
     });
 
     this.bonusConceded = true;
+
+    // Efeitos
+    const buttonClicked = document.getElementById(`person-${outOfLoopPersonId}`);
+    const allButtons = document.querySelectorAll('.person');
+    if (allButtons && buttonClicked) {
+      allButtons.forEach((button) => {
+        button.classList.remove('right', 'wrong');
+        button.setAttribute('disabled', 'true');
+        if (button.getAttribute('id') == `person-${this.service.getLoopPerson().id}`) {
+          button.classList.add('isthis');
+        }
+      });
+      buttonClicked.classList.add((this.outOfLoopRight) ? 'right' : 'wrong');
+    }
   }
 
   showGetOutOfLoopGamer() {

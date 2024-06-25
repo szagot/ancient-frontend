@@ -23,7 +23,7 @@
         
         <div class="border">
             <div *ngFor="let person of outOfTheLoopPeople">
-                <button class="btn btn-primary form-control" (click)="countingVotes(person.id)">{{person.name}}</button>
+                <button class="btn btn-primary form-control person" id="person-{{person.id}}" (click)="countingVotes(person.id)">{{person.name}}</button>
             </div>
         </div>
     </div>
