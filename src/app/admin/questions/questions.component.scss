@@ -35,40 +35,47 @@
         border-radius: var(--bs-border-radius);
     }
 
-    .questions {
-        position: relative;
-        padding: 20px;
-        border: 1px solid #414b55;
-        border-radius: var(--bs-border-radius);
+    .limit {
         height: 100%;
+        overflow: hidden;
 
-        small {
-            color: #666;
-            font-style: italic;
-        }
+        .questions {
+            position: relative;
+            padding: 20px;
+            border: 1px solid #414b55;
+            border-radius: var(--bs-border-radius);
+            height: 100%;
+            overflow: hidden;
+            overflow-y: auto;
 
-        h2 {
-            font-size: 2rem;
-        }
-
-        .group {
-            display: block;
-            margin: 20px 5px;
-            padding: 0;
-
-            .item {
-                display: block;
-                margin: 5px 0;
-                padding: 0;
+            small {
+                color: #666;
+                font-style: italic;
             }
-        }
 
-        .save_btn {
-            position: absolute;
-            bottom: 0;
-            left: -5px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
+            h2 {
+                font-size: 2rem;
+            }
+
+            .group {
+                display: block;
+                margin: 20px 5px;
+                padding: 0;
+
+                .item {
+                    display: block;
+                    margin: 5px 0;
+                    padding: 0;
+                }
+            }
+
+            .save_btn {
+                position: absolute;
+                bottom: 0;
+                left: -5px;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
         }
     }
 }
