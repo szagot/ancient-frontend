@@ -38,10 +38,11 @@
     .limit {
         height: 100%;
         overflow: hidden;
+        position: relative;
 
         .questions {
-            position: relative;
-            padding: 20px;
+            position: static;
+            padding: 20px 20px 40px;
             border: 1px solid #414b55;
             border-radius: var(--bs-border-radius);
             height: 100%;
@@ -72,7 +73,9 @@
             .save_btn {
                 position: absolute;
                 bottom: 0;
-                left: -5px;
+                left: 7px;
+                right: 7px;
+                width: auto;
                 border-top-left-radius: 0;
                 border-top-right-radius: 0;
             }
