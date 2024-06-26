@@ -17,7 +17,7 @@ export class Fase3Component {
   actualGamer: Gamer = new Gamer();
   actualQuestionIndex: number = 0;
   actualQuestion: Question = new Question();
-  secondRound = false;
+  questionsAnswered: number = 0;
   gamersQueue: Gamer[] = [];
   questions: Question[] = [];
 
@@ -25,7 +25,7 @@ export class Fase3Component {
     this.service.restartCountGamer();
     this.setActualGamer();
     this.setActualQuestion();
-    this.shuffleGamers();
+    this.setGamers();
     this.questions = this.service.getLoopQuestions();
   }
 
@@ -45,15 +45,19 @@ export class Fase3Component {
   }
 
   nextGamer() {
-    if (this.isAllGamersChoosen() && !this.secondRound) {
-      this.secondRound = true;
+    if (this.isAllGamersChoosen() && !this.endQuestions() ) {
       this.service.restartCountGamer();
-      this.shuffleGamers();
+      this.setGamers();
     } else {
       this.service.nextGamer();
     }
     this.setActualGamer();
     this.setActualQuestion();
+    this.questionsAnswered++;
+  }
+
+  endQuestions(){
+    return this.questionsAnswered >= (this.service.getQtQuestions() - 1);
   }
 
   setActualGamer() {
@@ -64,7 +68,7 @@ export class Fase3Component {
     return this.service.isAllGamersChoosen();
   }
 
-  shuffleGamers() {
+  setGamers() {
     this.gamersQueue = this.service.getGamers();
   }
 

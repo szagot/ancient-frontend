@@ -5,7 +5,8 @@
 
         <div class="border">
             <div *ngFor="let gamer of gamers; index as i">
-                <button *ngIf="gamer.name != actualGamer.name" class="btn btn-primary form-control" (click)="preVote(i)" id="gamer-{{i}}">{{gamer.name}}</button>
+                <button *ngIf="gamer.name != actualGamer.name" class="btn btn-primary form-control" (click)="preVote(i)"
+                    id="gamer-{{i}}">{{gamer.name}}</button>
             </div>
 
             <button *ngIf="activeNext >= 0" class="btn blueShadow" (click)="nextGamer()">Próximo</button>
@@ -13,20 +14,32 @@
     </div>
     <div class="person" *ngIf="votationFinished && !showPeople" id="outOfTheLoop">
         <h2 class="blueShadow">Quem está fora da rodada?</h2>
-        
+
         <button *ngIf="!showGetOutOfLoop" class="btn blueShadow big" (click)="showGetOutOfLoopGamer()">?</button>
         <div *ngIf="showGetOutOfLoop" class="border">{{outOfTheLoopGamer.name}}</div>
     </div>
     <div class="person" *ngIf="votationFinished && showPeople">
         <h1 class="blueShadow">{{outOfTheLoopGamer.name}}</h1>
         <h2 class="blueShadow small">Qual o personagem secreto?</h2>
-        
+
         <div class="border">
             <div *ngFor="let person of outOfTheLoopPeople">
-                <button class="btn btn-primary form-control person" id="person-{{person.id}}" (click)="countingVotes(person.id)">{{person.name}}</button>
+                <button class="btn btn-primary form-control person" id="person-{{person.id}}"
+                    (click)="countingVotes(person.id)">{{person.name}}</button>
             </div>
         </div>
     </div>
 </div>
 
+<div class="tip border" *ngIf="showTip">
+    <div class="center">
+        <p>{{tip}}</p>
+        <button class="btn btn-primary" (click)="toggleTip()">
+            <i class="bi bi-x-circle-fill"></i> Fechar
+        </button>
+    </div>
+</div>
+
+<button class="btn next blueShadow" (click)="toggleTip()"
+    *ngIf="tip != '' && showPeople && qtTips < 2 && !bonusConceded">Dica?</button>
 <button class="btn next blueShadow" (click)="nextFase()" *ngIf="bonusConceded">De Novo!</button>

@@ -4,5 +4,5 @@
     <p class="border">{{actualQuestion.question}}</p>
 </div>
 
-<button class="btn next blueShadow" (click)="nextGamer()" *ngIf="!isAllGamersChoosen() || !secondRound">Próximo</button>
-<button class="btn next blueShadow" (click)="nextFase()" *ngIf="isAllGamersChoosen() && secondRound">Votação</button>
+<button class="btn next blueShadow" (click)="nextGamer()" *ngIf="!isAllGamersChoosen() || !endQuestions()">Próximo</button>
+<button class="btn next blueShadow" (click)="nextFase()" *ngIf="isAllGamersChoosen() && endQuestions()">Votação</button>

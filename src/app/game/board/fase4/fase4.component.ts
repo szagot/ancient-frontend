@@ -28,6 +28,9 @@ export class Fase4Component {
   bonusConceded: boolean;
   outOfTheLoopGamer: Gamer;
   activeNext: number;
+  tip: string;
+  showTip: boolean;
+  qtTips: number;
 
   constructor(private service: GameService) {
     this.votationFinished = false;
@@ -42,6 +45,9 @@ export class Fase4Component {
     this.totalRihtVotes = 0;
     this.totalWrongVotes = 0;
     this.activeNext = -1;
+    this.showTip = false;
+    this.tip = '';
+    this.qtTips = 0;
     this.outOfTheLoopPeople = this.service.getOutOfLoopPeople();
     this.outOfTheLoopGamer = this.service.getChooseOutOfLoop();
   }
@@ -146,6 +152,7 @@ export class Fase4Component {
 
   showGetOutOfLoopGamer() {
     this.showGetOutOfLoop = true;
+    this.setTip();
     setTimeout(() => {
       const element = document.getElementById('outOfTheLoop');
       if (element) {
@@ -160,5 +167,22 @@ export class Fase4Component {
         this.showPeople = true;
       }
     }, 2000);
+  }
+
+  setTip() {
+    this.tip = this.service.getTip();
+    this.qtTips++;
+  }
+
+  toggleTip() {
+    if (this.qtTips > 3) {
+      this.showTip = false;
+      return;
+    }
+
+    this.showTip = !this.showTip;
+    if (this.showTip) {
+      this.setTip();
+    }
   }
 }

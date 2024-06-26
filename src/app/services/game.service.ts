@@ -15,6 +15,7 @@ export class GameService {
   actualGamerIndex: number = 0;
   allGamersChoosen: boolean = false;
   loopQuestions: Question[] = [];
+  allQuestions: Question[] = [];
   personChoosen: Person = new Person();
   choosenOne: Gamer = new Gamer();
   people: Person[] = [];
@@ -87,6 +88,7 @@ export class GameService {
     this.allGamersChoosen = false;
     this.personChoosen = new Person();
     this.loopQuestions = [];
+    this.allQuestions = [];
     this.choosenOne = new Gamer();
     if (this.fase > 0) {
       this.configFase();
@@ -163,6 +165,11 @@ export class GameService {
     return array;
   }
 
+  getQtQuestions() {
+    const qtGamers = this.getGamers().length;
+    return qtGamers * ((qtGamers > 3) ? (qtGamers > 10 ? 1 : 2) : 3);
+  }
+
   setLoopQuestions() {
     if (!this.getGamers().length) {
       return;
@@ -173,9 +180,11 @@ export class GameService {
         return;
       }
 
+      this.allQuestions = questions;
+
       const questionShuffle = this.shuffleArray(questions);
 
-      const qtQuestions = this.getGamers().length * 2;
+      const qtQuestions = this.getQtQuestions();
       for (let i = 0; i < qtQuestions; i++) {
         if (i >= questionShuffle.length - 1) {
           break;
@@ -187,7 +196,7 @@ export class GameService {
   }
 
   hasEnoughQuestions() {
-    return (this.getGamers().length * 2) == this.loopQuestions.length;
+    return this.getQtQuestions() == this.loopQuestions.length;
   }
 
   getLoopPerson() {
@@ -213,5 +222,23 @@ export class GameService {
     shuffled.push(this.personChoosen);
 
     return this.shuffleArray(shuffled);
+  }
+
+  getTip(): string {
+    let tip: Question = new Question();
+
+    if (!this.allQuestions) {
+      return '';
+    }
+
+    this.shuffleArray(this.allQuestions).forEach((question: Question) => {
+      console.log(this.personChoosen, question);
+      if (tip.question == '' && question.people.some((person: Person) => person.id == this.personChoosen.id)) {
+        tip = question;
+        console.log(tip);
+      }
+    })
+
+    return tip.question.replace('?', '.');
   }
 }
