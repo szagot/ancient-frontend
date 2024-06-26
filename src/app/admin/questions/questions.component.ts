@@ -74,9 +74,7 @@ export class QuestionsComponent {
   }
 
   save(question: Question) {
-    this.service.update(question).subscribe(() => {
-      this.refreshTable();
-    });
+    this.service.update(question).subscribe(() => {});
   }
 
   saveNew() {

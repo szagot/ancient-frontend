@@ -52,9 +52,7 @@ export class PeopleComponent {
   }
 
   save(person: Person) {
-    this.service.update(person).subscribe(() => {
-      this.refreshTable();
-    });
+    this.service.update(person).subscribe(() => {});
   }
 
   saveNew() {
