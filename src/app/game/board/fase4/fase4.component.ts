@@ -175,7 +175,7 @@ export class Fase4Component {
   }
 
   toggleTip() {
-    if (this.qtTips > 3) {
+    if (this.qtTips > 1) {
       this.showTip = false;
       return;
     }

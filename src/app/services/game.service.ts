@@ -232,10 +232,8 @@ export class GameService {
     }
 
     this.shuffleArray(this.allQuestions).forEach((question: Question) => {
-      console.log(this.personChoosen, question);
       if (tip.question == '' && question.people.some((person: Person) => person.id == this.personChoosen.id)) {
         tip = question;
-        console.log(tip);
       }
     })
 
