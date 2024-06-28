@@ -1,0 +1,11 @@
+{
+    "/api": {
+      "target": "https://cazadiablos.app.br/ancient/backend",
+      "secure": false,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }
+  
