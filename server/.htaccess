@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Area Restrita"
+AuthUserFile /var/www/html/ancient/.htpasswd
+Require valid-user

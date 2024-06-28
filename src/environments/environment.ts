@@ -1,7 +1,7 @@
 export const environment = {
     production: true,
 
-    uri: '/ancient/backend',
+    uri: 'https://cazadiablos.app.br/ancient/backend',
     user: 'szagot',
     pass: 'DSpider1981',
 

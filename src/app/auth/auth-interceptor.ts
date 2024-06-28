@@ -5,7 +5,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     const authHeader = 'Basic ' + btoa(environment.user + ':' + environment.pass);
     req = req.clone({
         setHeaders: { 
-            Authorization: authHeader
+            Authorization: authHeader,
         },
         
     });
