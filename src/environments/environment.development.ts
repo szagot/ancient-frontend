@@ -1,7 +1,7 @@
 export const environment = {
     production: false,
     
-    uri: 'http://localhost:8888',
+    uri: '/api',
     user: 'szagot',
     pass: 'DSpider1981',
 

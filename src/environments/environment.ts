@@ -1,7 +1,7 @@
 export const environment = {
     production: true,
 
-    uri: '/api',
+    uri: '/ancient/backend',
     user: 'szagot',
     pass: 'DSpider1981',
 

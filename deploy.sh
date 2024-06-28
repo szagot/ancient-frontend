@@ -7,7 +7,7 @@ KEY_PATH=$1
 
 echo 'Dando stash de qualquer alteração pendente de commit...'
 echo ''
-git stash
+#git stash
 
 echo '------'
 echo 'Compilando...'
@@ -27,5 +27,5 @@ scp -ri "$KEY_PATH" ./dist/ancient-frontend/browser/* ec2-user@52.206.107.239:/v
 
 echo 'Retornando projeto salvo'
 echo ''
-git stash pop
+#git stash pop
 echo ''
