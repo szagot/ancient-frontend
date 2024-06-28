@@ -2,8 +2,8 @@ export const environment = {
     production: false,
     
     uri: '/api',
-    user: 'szagot',
-    pass: 'DSpider1981',
+    user: 'ancient',
+    pass: '4nC13nt!2024',
 
     questions: '/questions',
     people: '/people',
