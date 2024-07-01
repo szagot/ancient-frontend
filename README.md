@@ -2,6 +2,27 @@
 
 Sobre o jogo, há um help no canto superior direito no board do game.
 
+## Instruções de compilação
+
+Node Version: 20
+
+Java Version: 17
+
+Certiique-se de ter instalado o Android Studio.
+
+Após as dependencias instaladas (`npm install`), compile usando:
+
+```shell
+npm run build:prod
+npm run build:app
+```
+
+Após isso, uma versão do APK ficará em:
+
+`/platforms/android/app/build/outputs/apk/debug`
+
+## Original Instructions
+
 ## Development server
 
 Node Version: 20
