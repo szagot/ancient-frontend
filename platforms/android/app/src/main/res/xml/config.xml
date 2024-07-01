@@ -2,14 +2,17 @@
 <widget id="br.app.outofloop" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>OutOfLoop</name>
     <description>Jogo Fora da Rodada. Help no jogo.</description>
-    <icon platform="android" src="public/favicon120.png" />
     <author email="szagot@gmail.com" href="https://www.linkedin.com/in/szag-ot/">
         Daniel Bispo
     </author>
     <content src="index.html" />
+    <icon platform="android" src="public/favicon120.png" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="FullScreen" value="true" />
+    <preference name="PreferredContentMode" value="mobile" />
 </widget>
