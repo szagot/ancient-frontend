@@ -1,16 +1,25 @@
 {
-  "name": "ancient-frontend",
-  "version": "0.0.0",
+  "name": "br.app.outofloop",
+  "displayName": "OutOfLoop",
+  "version": "1.0.0",
+  "description": "Jogo Fora da Rodada. Help no jogo.",
+  "main": "index.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --configuration development",
     "build": "ng build",
-    "build:prod": "npm run build -- --aot --base-href /ancient/frontend/",
     "build:hml": "npm run build -- --configuration development --aot",
+    "build:prod": "ng build --aot",
+    "build:app": "cordova build android",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:ancient-frontend": "node dist/ancient-frontend/server/server.mjs"
   },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Apache Cordova Team",
+  "license": "Apache-2.0",
   "private": true,
   "dependencies": {
     "@angular/animations": "^18.0.0",
@@ -35,6 +44,7 @@
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
+    "cordova-android": "^13.0.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -42,5 +52,11 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.4.2"
+  },
+  "cordova": {
+    "platforms": [
+      "android"
+    ],
+    "plugins": {}
   }
 }
