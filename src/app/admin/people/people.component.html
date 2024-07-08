@@ -57,7 +57,7 @@
                                         id="id-{{personQuestions.id}}-{{question.id}}" [checked]="hasQuestion(question)"
                                         (change)="toggleQuestionSelection(question)">
                                     <label class="form-check-label" for="id-{{personQuestions.id}}-{{question.id}}">
-                                        {{question.question}}
+                                        {{question.question.replace('?', '')}}
                                     </label>
                                 </div>
                             </li>
