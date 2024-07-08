@@ -71,9 +71,9 @@ export class PeopleComponent {
 
   getQuestions(person: Person) {
     this.personQuestions = [];
-    this.service.getQuestions(person.id).subscribe((questions: Question[]) => {
+    this.service.getPerson(person.id).subscribe((person: Person) => {
       this.personQuestions.person = person;
-      this.personQuestions.questions = questions;
+      this.personQuestions.questions = person?.questions || [];
     });
   }
 }

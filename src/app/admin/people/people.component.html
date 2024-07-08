@@ -49,10 +49,10 @@
                 </div>
                 <div *ngIf="personQuestions.person">
                     <h2 class="display-6">{{personQuestions.person.name}}</h2>
-                    <div *ngIf="!personQuestions.questions.length"><small>Nenhum pergunta cadastrada</small></div>
-                    <div *ngIf="personQuestions.questions.length">
+                    <div *ngIf="!personQuestions?.questions?.length"><small>Nenhum pergunta cadastrada</small></div>
+                    <div *ngIf="personQuestions?.questions?.length">
                         <ul class="group">
-                            <li class="item" *ngFor="let question of personQuestions.questions">{{question.question}}
+                            <li class="item" *ngFor="let question of personQuestions?.questions">{{question?.question}}
                             </li>
                         </ul>
                     </div>

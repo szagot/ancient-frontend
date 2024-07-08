@@ -60,21 +60,21 @@ export class QuestionsComponent {
   }
 
   hasPerson(person: Person): boolean {
-    return this.personQuestions.people.some((thisPerson: any) => thisPerson.id === person.id);
+    return this.personQuestions?.characters?.some((thisPerson: any) => thisPerson.id === person.id) || false;
   }
 
   togglePersonSelection(person: any) {
     this.block = true;
-    const index = this.personQuestions.people.findIndex((thisPerson: any) => thisPerson.id === person.id);
+    const index = this.personQuestions?.characters?.findIndex((thisPerson: any) => thisPerson.id === person.id) || -1;
     if (index > -1) {
-      this.personQuestions.people.splice(index, 1);
+      this.personQuestions.characters.splice(index, 1);
     } else {
-      this.personQuestions.people.push(person);
+      this.personQuestions.characters.push(person);
     }
   }
 
   save(question: Question) {
-    this.service.update(question).subscribe(() => {});
+    this.service.update(question).subscribe(() => { });
   }
 
   saveNew() {
@@ -92,8 +92,14 @@ export class QuestionsComponent {
 
   getPersons(question: Question) {
     if (!this.block) {
+      // Prepara personagem
       this.personQuestions = new Question();
-      this.personQuestions = question;
+      this.personQuestions.id = question?.id || 0;
+      this.personQuestions.question = question?.question || '';
+      // Completa com personagens
+      this.service.getQuestion(question.id).subscribe((question: Question) => {
+      this.personQuestions.characters = question?.characters || [];
+    });
     }
   }
 

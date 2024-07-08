@@ -232,7 +232,7 @@ export class GameService {
     }
 
     this.shuffleArray(this.allQuestions).forEach((question: Question) => {
-      if (tip.question == '' && question.people.some((person: Person) => person.id == this.personChoosen.id)) {
+      if (tip.question == '' && (question?.characters?.some((person: Person) => person.id == this.personChoosen.id) || false)) {
         tip = question;
       }
     })

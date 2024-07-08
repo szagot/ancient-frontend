@@ -15,6 +15,10 @@ export class QuestionsService {
     return this.http.get(environment.uri + environment.questions);
   }
 
+  getQuestion(id: number): Observable<any>{
+    return this.http.get(environment.uri + environment.questions + `/${id}`);
+  }
+
   insert(question: string): Observable<any> {
     return this.http.post(environment.uri + environment.questions, {
       question: question
@@ -24,7 +28,7 @@ export class QuestionsService {
   update(question: Question): Observable<any> {
     return this.http.put(environment.uri + environment.questions + `/${question.id}`, {
       question: question.question,
-      people: question.people.map((person: any) => person.id)
+      characterIds: question.characters.map((person: any) => person.id)
     });
   }
 
