@@ -98,8 +98,8 @@ export class QuestionsComponent {
       this.personQuestions.question = question?.question || '';
       // Completa com personagens
       this.service.getQuestion(question.id).subscribe((question: Question) => {
-      this.personQuestions.characters = question?.characters || [];
-    });
+        this.personQuestions.characters = question?.characters || [];
+      });
     }
   }
 

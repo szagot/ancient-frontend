@@ -27,7 +27,8 @@ export class PeopleService {
 
   update(person: Person): Observable<any>{
     return this.http.put(environment.uri + environment.people + `/${person.id}`, {
-      name: person.name
+      name: person.name,
+      questionIds: person.questions.map((question: any) => question.id)
     });
   }
 

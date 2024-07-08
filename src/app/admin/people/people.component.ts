@@ -70,9 +70,11 @@ export class PeopleComponent {
   }
 
   getQuestions(person: Person) {
-    this.personQuestions = [];
+    this.personQuestions = new Person();
+    this.personQuestions.id = person?.id || 0;
+    this.personQuestions.name = person?.name || '';
+    // Completa com personagens
     this.service.getPerson(person.id).subscribe((person: Person) => {
-      this.personQuestions.person = person;
       this.personQuestions.questions = person?.questions || [];
     });
   }

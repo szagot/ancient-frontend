@@ -44,11 +44,11 @@
         </div>
         <div class="col-12 col-md-4">
             <div class="questions">
-                <div *ngIf="!personQuestions.person">
+                <div *ngIf="!personQuestions">
                     <small>Clique em visualizar questões de um personagem ao lado...</small>
                 </div>
-                <div *ngIf="personQuestions.person">
-                    <h2 class="display-6">{{personQuestions.person.name}}</h2>
+                <div *ngIf="personQuestions">
+                    <h2 class="display-6">{{personQuestions?.name}}</h2>
                     <div *ngIf="!personQuestions?.questions?.length"><small>Nenhum pergunta cadastrada</small></div>
                     <div *ngIf="personQuestions?.questions?.length">
                         <ul class="group">
