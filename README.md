@@ -20,7 +20,7 @@ cordova platform add android
 Após as dependencias instaladas (`npm install`), compile usando:
 
 ```shell
-npm run build:prod
+npm run build:prod:app
 npm run build:app
 ```
 
