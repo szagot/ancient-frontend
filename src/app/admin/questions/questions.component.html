@@ -48,7 +48,7 @@
                     <small>Clique em editar personages de uma pergunta ao lado...</small>
                 </div>
                 <div *ngIf="personQuestions.id">
-                    <h2 class="display-6">Pergunta #{{personQuestions.id}}</h2>
+                    <h2 class="display-6">Pergunta {{personQuestions.id}}: {{personQuestions.question}}</h2>
                     <ul class="group">
                         <li class="item" *ngFor="let person of allPeople">
                             <div class="form-check">

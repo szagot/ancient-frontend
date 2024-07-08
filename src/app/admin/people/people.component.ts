@@ -4,6 +4,7 @@ import { Person } from '../../models/person.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Question } from '../../models/question.model';
+import { QuestionsService } from '../../services/questions.service';
 
 @Component({
   selector: 'app-people',
@@ -23,14 +24,23 @@ export class PeopleComponent {
     person: null,
     question: []
   };
+  allQuestions: Question[] = [];
+  block: boolean = false;
 
-  constructor(private service: PeopleService) { }
+  constructor(
+    private service: PeopleService,
+    private questionService: QuestionsService
+  ) { }
 
   ngOnInit() {
     this.refreshTable();
+    this.questionService.getAll().subscribe((question: Question[]) => {
+      this.allQuestions = question;
+    });
   }
 
   refreshTable() {
+    this.block = false;
     this.newName = '';
     this.find = '';
     this.people = [];
@@ -52,7 +62,7 @@ export class PeopleComponent {
   }
 
   save(person: Person) {
-    this.service.update(person).subscribe(() => {});
+    this.service.update(person).subscribe(() => { });
   }
 
   saveNew() {
@@ -69,13 +79,36 @@ export class PeopleComponent {
     }
   }
 
+  saveQuestions() {
+    this.block = false;
+    if (this.personQuestions.id) {
+      this.save(this.personQuestions);
+    }
+  }
+
   getQuestions(person: Person) {
-    this.personQuestions = new Person();
-    this.personQuestions.id = person?.id || 0;
-    this.personQuestions.name = person?.name || '';
-    // Completa com personagens
-    this.service.getPerson(person.id).subscribe((person: Person) => {
-      this.personQuestions.questions = person?.questions || [];
-    });
+    if (!this.block) {
+      this.personQuestions = new Person();
+      this.personQuestions.id = person?.id || 0;
+      this.personQuestions.name = person?.name || '';
+      // Completa com personagens
+      this.service.getPerson(person.id).subscribe((person: Person) => {
+        this.personQuestions.questions = person?.questions || [];
+      });
+    }
+  }
+
+  hasQuestion(question: Question): boolean {
+    return this.personQuestions?.questions?.some((thisQuestion: any) => thisQuestion.id === question.id) || false;
+  }
+
+  toggleQuestionSelection(question: any) {
+    this.block = true;
+    const index = this.personQuestions?.questions?.findIndex((thisQuestion: any) => thisQuestion.id === question.id) || -1;
+    if (index > -1) {
+      this.personQuestions.questions.splice(index, 1);
+    } else {
+      this.personQuestions.questions.push(question);
+    }
   }
 }
