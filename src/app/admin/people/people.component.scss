@@ -19,6 +19,14 @@
         text-align: center;
     }
 
+    .active {
+        td,
+        th {
+            background: rgba(0, 255, 34, 0.2) !important;
+            --bs-table-bg-type: rgba(0, 255, 34, 0.2)!important;
+        }
+    }
+
     .actions {
         width: 100px;
     }

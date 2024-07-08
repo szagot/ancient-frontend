@@ -21,7 +21,7 @@
                             <td><input class="form-control" [(ngModel)]="newName" (change)="saveNew()"></td>
                             <th></th>
                         </tr>
-                        <tr *ngFor="let person of filteredPeople()">
+                        <tr *ngFor="let person of filteredPeople()" [ngClass]="(personQuestions?.id == person.id) ? 'active' : ''">
                             <th>{{person.id}}</th>
                             <td><input class="form-control" [(ngModel)]="person.name" (change)="save(person)"></td>
                             <th>
