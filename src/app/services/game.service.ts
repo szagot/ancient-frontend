@@ -181,6 +181,12 @@ export class GameService {
       }
 
       this.allQuestions = questions;
+      // Completanto com personagens
+      this.allQuestions.forEach((question: Question)=>{
+        this.questionService.getQuestion(question.id).subscribe((questionDetail: Question)=>{
+          question.characters = questionDetail.characters;
+        });
+      });
 
       const questionShuffle = this.shuffleArray(questions);
 
