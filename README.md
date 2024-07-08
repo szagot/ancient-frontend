@@ -6,9 +6,27 @@ Sobre o jogo, há um help no canto superior direito no board do game.
 
 Node Version: 20
 
+### Servidor WEB
+
+Após as dependencias instaladas (`npm install`), compile usando:
+
+```shell
+npm run build:prod
+```
+
+Os arquivos ficarão em `./www/`
+
+Ou, para já enviar ao servidor AWS, utilize
+
+```shell
+./deploy.sh /caminho/da/chave.pem
+```
+
+### Android APK
+
 Java Version: 17
 
-Certiique-se de ter instalado o Android Studio.
+Certique-se de ter instalado o Android Studio.
 
 Além disso, caso não o tenha feito, instale o Cordova de modo global e depois adicione, na pasta do projeto, a plataforma Android usando:
 
@@ -24,11 +42,17 @@ npm run build:prod:app
 npm run build:app
 ```
 
+Ou utilize o atalho:
+
+```shell
+./apk.sh
+```
+
 Após isso, uma versão do APK ficará em:
 
-`/platforms/android/app/build/outputs/apk/debug`
+`./platforms/android/app/build/outputs/apk/debug`
 
-> **Obs**.: O `build:prod` vai compilar o Angular, e o `build:app` vai compilar o APK para Android
+> **Obs**.: O `build:prod:app` vai compilar o Angular, e o `build:app` vai compilar o APK para Android
 
 ---
 
