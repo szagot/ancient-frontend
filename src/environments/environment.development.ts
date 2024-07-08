@@ -3,8 +3,7 @@ export const environment = {
     
     uri: 'http://localhost:8888',
     //uri: '/api',  // Para pegar localmente o backend online
-    user: 'ancient',
-    pass: '4nC13nt!2024',
+    auth: 'YW5jaWVudDo0bkMxM250ITIwMjQ',
 
     questions: '/questions',
     people: '/characters',

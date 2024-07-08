@@ -2,9 +2,8 @@ export const environment = {
     production: true,
 
     uri: 'https://cazadiablos.app.br/ancient/backend',
-    user: 'ancient',
-    pass: '4nC13nt!2024',
+    auth: 'YW5jaWVudDo0bkMxM250ITIwMjQ',
 
     questions: '/questions',
-    people: '/people',
+    people: '/characters',
 };
