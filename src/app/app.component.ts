@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet, Event } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,20 +13,33 @@ import { Router, RouterOutlet } from '@angular/router';
     CommonModule
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'ancient-frontend';
+  currentRoute: string = '';
   navItems = [
     { route: '/', icon: 'bi-joystick', label: 'Jogo' },
     { route: '/admin/people', icon: 'bi-people-fill', label: 'Pessoas' },
     { route: '/admin/questions', icon: 'bi-patch-question-fill', label: 'Perguntas' },
   ];
 
-  constructor(private routes: Router) { }
+  constructor(private router: Router) { }
+
+  ngOnInit() {
+    this.router.events.pipe(
+      filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      this.currentRoute = event.urlAfterRedirects;
+    });
+  }
 
   go(url: string) {
-    this.routes.navigateByUrl(url);
+    this.router.navigateByUrl(url);
     return false;
+  }
+
+  sameRoute(url: string) {
+    return url === this.currentRoute;
   }
 }
