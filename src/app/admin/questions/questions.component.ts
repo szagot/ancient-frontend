@@ -63,13 +63,15 @@ export class QuestionsComponent {
     return this.personQuestions?.characters?.some((thisPerson: any) => thisPerson.id === person.id) || false;
   }
 
-  togglePersonSelection(person: any) {
+  togglePersonSelection(person: Person) {
     this.block = true;
-    const index = this.personQuestions?.characters?.findIndex((thisPerson: any) => thisPerson.id === person.id) || -1;
+    const people = this.personQuestions?.characters || [];
+    const index = people.findIndex((thisPerson: Person) => thisPerson.id == person.id);
+
     if (index > -1) {
-      this.personQuestions.characters.splice(index, 1);
+      people.splice(index, 1);
     } else {
-      this.personQuestions.characters.push(person);
+      people.push(person);
     }
   }
 

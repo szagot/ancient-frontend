@@ -102,13 +102,16 @@ export class PeopleComponent {
     return this.personQuestions?.questions?.some((thisQuestion: any) => thisQuestion.id === question.id) || false;
   }
 
-  toggleQuestionSelection(question: any) {
+  toggleQuestionSelection(question: Question) {
     this.block = true;
-    const index = this.personQuestions?.questions?.findIndex((thisQuestion: any) => thisQuestion.id === question.id) || -1;
+    const questions = this.personQuestions?.questions || [];
+    const index = questions.findIndex((thisQuestion: Question) => thisQuestion.id == question.id);
+
     if (index > -1) {
-      this.personQuestions.questions.splice(index, 1);
+      questions.splice(index, 1);
     } else {
-      this.personQuestions.questions.push(question);
+      questions.push(question);
     }
   }
+
 }
