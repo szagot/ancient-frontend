@@ -43,13 +43,12 @@
         </div>
         <div class="col-12 col-md-4 limit">
             <div class="questions">
-                <div *ngIf="!personQuestions">
+                <div *ngIf="!personQuestions?.name">
                     <small>Clique em editar questões de um personagem ao lado...</small>
                 </div>
-                <div *ngIf="personQuestions">
+                <div *ngIf="personQuestions?.name">
                     <h2 class="display-6">{{personQuestions?.name}}</h2>
-                    <div *ngIf="!personQuestions?.questions?.length"><small>Nenhum pergunta cadastrada</small></div>
-                    <div *ngIf="personQuestions?.questions?.length">
+                    <div>
                         <ul class="group">
                             <li class="item" *ngFor="let question of allQuestions">
                                 <div class="form-check">
